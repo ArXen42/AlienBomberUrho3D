@@ -1,11 +1,12 @@
 #include "Game.h"
+#include "Terrain2DController.h"
 #include <Urho3D/Urho2D/PhysicsWorld2D.h>
 
 void Game::Setup() {
 	engineParameters_["FullScreen"] = false;
 	engineParameters_["WindowWidth"] = 1280;
 	engineParameters_["WindowHeight"] = 720;
-	engineParameters_["WindowResizable"] = true;
+	engineParameters_["WindowResizable"] = false;
 
 }
 
@@ -21,6 +22,7 @@ void Game::Stop() {
 void Game::LoadGameLevel() {
 	{
 		// Регистрация компонентов
+		Terrain2DController::RegisterObject(context_);
 	}
 
 	{
@@ -39,6 +41,7 @@ void Game::LoadGameLevel() {
 	}
 
 	{
+		scene_.Get()->GetChild("Terrain")->CreateComponent<Terrain2DController>();
 		// Инициализация своих компонентов на сцене
 		// (к сожалению, Urho3D не может их задавать в редакторе, в отличие от AngelScript скриптов)
 	}
