@@ -30,18 +30,18 @@ uniform vec4 cUOffset;
 uniform vec4 cVOffset;
 uniform mat4 cZone;
 #if !defined(GL_ES) || defined(WEBGL)
-	 uniform mat4 cLightMatrices[4];
+    uniform mat4 cLightMatrices[4];
 #else
-	 uniform highp mat4 cLightMatrices[2];
+    uniform highp mat4 cLightMatrices[2];
 #endif
 #ifdef SKINNED
-	 uniform vec4 cSkinMatrices[MAXBONES*3];
+    uniform vec4 cSkinMatrices[MAXBONES*3];
 #endif
 #ifdef NUMVERTEXLIGHTS
-	 uniform vec4 cVertexLights[4*3];
+    uniform vec4 cVertexLights[4*3];
 #endif
 #ifdef GL3
-	 uniform vec4 cClipPlane;
+    uniform vec4 cClipPlane;
 #endif
 #endif
 
@@ -49,7 +49,7 @@ uniform mat4 cZone;
 
 // Fragment shader uniforms
 #ifdef GL_ES
-	 precision mediump float;
+    precision mediump float;
 #endif
 
 uniform vec4 cAmbientColor;
@@ -69,8 +69,8 @@ uniform vec3 cMatEmissiveColor;
 uniform vec3 cMatEnvMapColor;
 uniform vec4 cMatSpecColor;
 #ifdef PBR
-	 uniform float cRoughness;
-	 uniform float cMetallic;
+    uniform float cRoughness;
+    uniform float cMetallic;
 #endif
 uniform float cNearClipPS;
 uniform float cFarClipPS;
@@ -93,59 +93,59 @@ uniform vec2 cVSMShadowParams;
 
 uniform FrameVS
 {
-	 float cDeltaTime;
-	 float cElapsedTime;
+    float cDeltaTime;
+    float cElapsedTime;
 };
 
 uniform CameraVS
 {
-	 vec3 cCameraPos;
-	 float cNearClip;
-	 float cFarClip;
-	 vec4 cDepthMode;
-	 vec3 cFrustumSize;
-	 vec4 cGBufferOffsets;
-	 mat4 cView;
-	 mat4 cViewInv;
-	 mat4 cViewProj;
-	 vec4 cClipPlane;
+    vec3 cCameraPos;
+    float cNearClip;
+    float cFarClip;
+    vec4 cDepthMode;
+    vec3 cFrustumSize;
+    vec4 cGBufferOffsets;
+    mat4 cView;
+    mat4 cViewInv;
+    mat4 cViewProj;
+    vec4 cClipPlane;
 };
 
 uniform ZoneVS
 {
-	 vec3 cAmbientStartColor;
-	 vec3 cAmbientEndColor;
-	 mat4 cZone;
+    vec3 cAmbientStartColor;
+    vec3 cAmbientEndColor;
+    mat4 cZone;
 };
 
 uniform LightVS
 {
-	 vec4 cLightPos;
-	 vec3 cLightDir;
-	 vec4 cNormalOffsetScale;
+    vec4 cLightPos;
+    vec3 cLightDir;
+    vec4 cNormalOffsetScale;
 #ifdef NUMVERTEXLIGHTS
-	 vec4 cVertexLights[4 * 3];
+    vec4 cVertexLights[4 * 3];
 #else
-	 mat4 cLightMatrices[4];
+    mat4 cLightMatrices[4];
 #endif
 };
 
 #ifndef CUSTOM_MATERIAL_CBUFFER
 uniform MaterialVS
 {
-	 vec4 cUOffset;
-	 vec4 cVOffset;
+    vec4 cUOffset;
+    vec4 cVOffset;
 };
 #endif
 
 uniform ObjectVS
 {
-	 mat4 cModel;
+    mat4 cModel;
 #ifdef BILLBOARD
-	 mat3 cBillboardRot;
+    mat3 cBillboardRot;
 #endif
 #ifdef SKINNED
-	 uniform vec4 cSkinMatrices[MAXBONES*3];
+    uniform vec4 cSkinMatrices[MAXBONES*3];
 #endif
 };
 
@@ -156,54 +156,54 @@ uniform ObjectVS
 // Pixel shader uniforms
 uniform FramePS
 {
-	 float cDeltaTimePS;
-	 float cElapsedTimePS;
+    float cDeltaTimePS;
+    float cElapsedTimePS;
 };
 
 uniform CameraPS
 {
-	 vec3 cCameraPosPS;
-	 vec4 cDepthReconstruct;
-	 vec2 cGBufferInvSize;
-	 float cNearClipPS;
-	 float cFarClipPS;
+    vec3 cCameraPosPS;
+    vec4 cDepthReconstruct;
+    vec2 cGBufferInvSize;
+    float cNearClipPS;
+    float cFarClipPS;
 };
 
 uniform ZonePS
 {
-	 vec4 cAmbientColor;
-	 vec4 cFogParams;
-	 vec3 cFogColor;
+    vec4 cAmbientColor;
+    vec4 cFogParams;
+    vec3 cFogColor;
 };
 
 uniform LightPS
 {
-	 vec4 cLightColor;
-	 vec4 cLightPosPS;
-	 vec3 cLightDirPS;
-	 vec4 cNormalOffsetScalePS;
-	 vec4 cShadowCubeAdjust;
-	 vec4 cShadowDepthFade;
-	 vec2 cShadowIntensity;
-	 vec2 cShadowMapInvSize;
-	 vec4 cShadowSplits;
-	 mat4 cLightMatricesPS[4];
+    vec4 cLightColor;
+    vec4 cLightPosPS;
+    vec3 cLightDirPS;
+    vec4 cNormalOffsetScalePS;
+    vec4 cShadowCubeAdjust;
+    vec4 cShadowDepthFade;
+    vec2 cShadowIntensity;
+    vec2 cShadowMapInvSize;
+    vec4 cShadowSplits;
+    mat4 cLightMatricesPS[4];
 #ifdef VSM_SHADOW
-	 vec2 cVSMShadowParams;
+    vec2 cVSMShadowParams;
 #endif
 };
 
 #ifndef CUSTOM_MATERIAL_CBUFFER
 uniform MaterialPS
 {
-	 vec4 cMatDiffColor;
-	 vec3 cMatEmissiveColor;
-	 vec3 cMatEnvMapColor;
-	 vec4 cMatSpecColor;
-#ifdef PBR
-		  float cRoughness;
-		  float cMetallic;
-#endif
+    vec4 cMatDiffColor;
+    vec3 cMatEmissiveColor;
+    vec3 cMatEnvMapColor;
+    vec4 cMatSpecColor;
+    #ifdef PBR
+        float cRoughness;
+        float cMetallic;
+    #endif
 };
 #endif
 

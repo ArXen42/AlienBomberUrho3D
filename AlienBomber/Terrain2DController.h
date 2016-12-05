@@ -27,6 +27,7 @@ private:
 		UpdateSprite();
 	}
 	void UpdateCollisionChain();
+	void InitializeSprite();
 	void UpdateSprite();
 
 	void GenerateHeightmap(uint length, float startHeight, float endHeight, float roughness);
@@ -35,6 +36,9 @@ private:
 
 	float terrainLength_;
 	float terrainMaxHeight_;
+
+	const int terrainResolutionX_ = 400;
+	const int terrainResolutionY_ = 100;
 
 	Vector<float>* heightmap_;
 };

@@ -1,148 +1,146 @@
 {
-  "id": 1,
-  "attributes": {
-    "Name": "",
-    "Time Scale": 1,
-    "Smoothing Constant": 50,
-    "Snap Threshold": 5,
-    "Elapsed Time": 3.15888,
-    "Next Replicated Node ID": 1,
-    "Next Replicated Component ID": 6,
-    "Next Local Node ID": 16777243,
-    "Next Local Component ID": 16777412,
-    "Variables": {},
-    "Variable Names": ""
-  },
-  "components": [
-    {
-      "type": "Octree",
-      "id": 1,
-      "attributes": null
-    },
-    {
-      "type": "DebugRenderer",
-      "id": 2
-    },
-    {
-      "type": "Renderer2D",
-      "id": 3
-    },
-    {
-      "type": "PhysicsWorld2D",
-      "id": 4,
-      "attributes": {
-        "Draw Shape": true,
-        "Draw Joint": true,
-        "Draw Pair": true,
-        "Draw CenterOfMass": true,
-        "Allow Sleeping": true,
-        "Warm Starting": true,
-        "Continuous Physics": true,
-        "Sub Stepping": true,
-        "Auto Clear Forces": true
-      }
-    },
-    {
-      "type": "PhysicsWorld",
-      "id": 5,
-      "attributes": null
-    }
-  ],
-  "children": [
-    {
-      "id": 16777218,
-      "attributes": {
-        "Is Enabled": true,
-        "Name": "MainCamera",
-        "Tags": [],
-        "Position": "0 0 -4",
-        "Rotation": "1 0 0 0",
-        "Scale": "1 1 1",
-        "Variables": {}
-      },
-      "components": [
-        {
-          "type": "Camera",
-          "id": 16777240,
-          "attributes": {
-            "Near Clip": 0,
-            "Aspect Ratio": 1.78067,
-            "Orthographic": true
-          }
-        }
-      ],
-      "children": []
-    },
-    {
-      "id": 16777239,
-      "attributes": {
-        "Is Enabled": true,
-        "Name": "Terrain",
-        "Tags": [],
-        "Position": "0 -5 0",
-        "Rotation": "1 0 0 0",
-        "Scale": "8 2 20",
-        "Variables": {}
-      },
-      "components": [
-        {
-          "type": "CollisionChain2D",
-          "id": 16777394,
-          "attributes": {
-            "Category Bits": 1,
-            "Mask Bits": 65535
-          }
-        },
-        {
-          "type": "StaticSprite2D",
-          "id": 16777395,
-          "attributes": {
-            "Sprite": "Sprite2D;Sprites/LandSprite.png"
-          }
-        },
-        {
-          "type": "RigidBody2D",
-          "id": 16777399,
-          "attributes": {
-            "Body Type": "Kinematic"
-          }
-        }
-      ],
-      "children": []
-    },
-    {
-      "id": 16777240,
-      "attributes": {
-        "Is Enabled": true,
-        "Name": "",
-        "Tags": [],
-        "Position": "1.29992 1.53113 0",
-        "Rotation": "1 0 0 0",
-        "Scale": "1 1 1",
-        "Variables": {}
-      },
-      "components": [
-        {
-          "type": "CollisionBox2D",
-          "id": 16777396,
-          "attributes": {
-            "Size": "1 1",
-            "Category Bits": 1,
-            "Mask Bits": 65535
-          }
-        },
-        {
-          "type": "RigidBody2D",
-          "id": 16777397,
-          "attributes": {
-            "Body Type": "Dynamic",
-            "Mass": 1,
-            "Inertia": 1,
-            "Use Fixture Mass": false
-          }
-        }
-      ],
-      "children": []
-    }
-  ]
+	"id": 1,
+	"attributes": {
+		"Name": "",
+		"Time Scale": 1,
+		"Smoothing Constant": 50,
+		"Snap Threshold": 5,
+		"Elapsed Time": 3.15888,
+		"Next Replicated Node ID": 1,
+		"Next Replicated Component ID": 6,
+		"Next Local Node ID": 16777244,
+		"Next Local Component ID": 16777430,
+		"Variables": {},
+		"Variable Names": ""
+	},
+	"components": [
+		{
+			"type": "Octree",
+			"id": 1,
+			"attributes": null
+		},
+		{
+			"type": "DebugRenderer",
+			"id": 2
+		},
+		{
+			"type": "Renderer2D",
+			"id": 3
+		},
+		{
+			"type": "PhysicsWorld2D",
+			"id": 4,
+			"attributes": {
+				"Draw Shape": true,
+				"Draw Joint": true,
+				"Draw Pair": true,
+				"Draw CenterOfMass": true,
+				"Allow Sleeping": true,
+				"Warm Starting": true,
+				"Continuous Physics": true,
+				"Sub Stepping": true,
+				"Auto Clear Forces": true
+			}
+		},
+		{
+			"type": "PhysicsWorld",
+			"id": 5,
+			"attributes": null
+		}
+	],
+	"children": [
+		{
+			"id": 16777218,
+			"attributes": {
+				"Is Enabled": true,
+				"Name": "MainCamera",
+				"Tags": [],
+				"Position": "0 0 -4",
+				"Rotation": "1 0 0 0",
+				"Scale": "1 1 1",
+				"Variables": {}
+			},
+			"components": [
+				{
+					"type": "Camera",
+					"id": 16777240,
+					"attributes": {
+						"Near Clip": 0,
+						"Aspect Ratio": 1.78067,
+						"Orthographic": true
+					}
+				}
+			],
+			"children": []
+		},
+		{
+			"id": 16777239,
+			"attributes": {
+				"Is Enabled": true,
+				"Name": "Terrain",
+				"Tags": [],
+				"Position": "0 -5 0",
+				"Rotation": "1 0 0 0",
+				"Scale": "8 2 1",
+				"Variables": {}
+			},
+			"components": [
+				{
+					"type": "CollisionChain2D",
+					"id": 16777394,
+					"attributes": {
+						"Category Bits": 1,
+						"Mask Bits": 65535
+					}
+				},
+				{
+					"type": "StaticSprite2D",
+					"id": 16777428,
+					"attributes": null
+				},
+				{
+					"type": "RigidBody2D",
+					"id": 16777429,
+					"attributes": {
+						"Body Type": "Kinematic"
+					}
+				}
+			],
+			"children": []
+		},
+		{
+			"id": 16777240,
+			"attributes": {
+				"Is Enabled": true,
+				"Name": "",
+				"Tags": [],
+				"Position": "1.29992 1.53113 0",
+				"Rotation": "1 0 0 0",
+				"Scale": "1 1 1",
+				"Variables": {}
+			},
+			"components": [
+				{
+					"type": "CollisionBox2D",
+					"id": 16777396,
+					"attributes": {
+						"Size": "1 1",
+						"Category Bits": 1,
+						"Mask Bits": 65535
+					}
+				},
+				{
+					"type": "RigidBody2D",
+					"id": 16777397,
+					"attributes": {
+						"Body Type": "Dynamic",
+						"Mass": 1,
+						"Inertia": 1,
+						"Use Fixture Mass": false
+					}
+				}
+			],
+			"children": []
+		}
+	]
 }
