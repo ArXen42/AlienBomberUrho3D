@@ -6,10 +6,10 @@
 		"Smoothing Constant": 50,
 		"Snap Threshold": 5,
 		"Elapsed Time": 3.15888,
-		"Next Replicated Node ID": 1,
-		"Next Replicated Component ID": 6,
+		"Next Replicated Node ID": 3,
+		"Next Replicated Component ID": 7,
 		"Next Local Node ID": 16777244,
-		"Next Local Component ID": 16777430,
+		"Next Local Component ID": 16777431,
 		"Variables": {},
 		"Variable Names": ""
 	},
@@ -112,11 +112,11 @@
 			"id": 16777240,
 			"attributes": {
 				"Is Enabled": true,
-				"Name": "",
+				"Name": "Plane",
 				"Tags": [],
 				"Position": "1.29992 1.53113 0",
-				"Rotation": "1 0 0 0",
-				"Scale": "1 1 1",
+				"Rotation": "-4.37114e-08 0 1 -0",
+				"Scale": "2 2.5 2",
 				"Variables": {}
 			},
 			"components": [
@@ -124,7 +124,8 @@
 					"type": "CollisionBox2D",
 					"id": 16777396,
 					"attributes": {
-						"Size": "1 1",
+						"Size": "0.65 0.1",
+						"Center": "-0.025 -0.05",
 						"Category Bits": 1,
 						"Mask Bits": 65535
 					}
@@ -133,10 +134,17 @@
 					"type": "RigidBody2D",
 					"id": 16777397,
 					"attributes": {
-						"Body Type": "Dynamic",
+						"Body Type": "Kinematic",
 						"Mass": 1,
 						"Inertia": 1,
 						"Use Fixture Mass": false
+					}
+				},
+				{
+					"type": "StaticSprite2D",
+					"id": 16777430,
+					"attributes": {
+						"Sprite": "Sprite2D;Sprites/Plane.png"
 					}
 				}
 			],

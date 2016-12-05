@@ -31,7 +31,6 @@ void Terrain2DController::UpdateCollisionChain() {
 	for (uint i = 0; i < size; i++) {
 		vertices[i] = Vector2(i*terrainLength_/(size - 1), heightmap_->At(i)*terrainMaxHeight_) -
 		              Vector2(terrainLength_/2, terrainMaxHeight_/2);
-//		URHO3D_LOGINFO((String)i + "  " + vertices[i].ToString());
 	}
 
 	collisionChain->SetVertices(vertices);
