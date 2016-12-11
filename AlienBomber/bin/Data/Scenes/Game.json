@@ -8,8 +8,8 @@
 		"Elapsed Time": 3.15888,
 		"Next Replicated Node ID": 3,
 		"Next Replicated Component ID": 7,
-		"Next Local Node ID": 16777244,
-		"Next Local Component ID": 16777431,
+		"Next Local Node ID": 16777246,
+		"Next Local Component ID": 16777444,
 		"Variables": {},
 		"Variable Names": ""
 	},
@@ -81,7 +81,7 @@
 				"Tags": [],
 				"Position": "0 -5 0",
 				"Rotation": "1 0 0 0",
-				"Scale": "8 2 1",
+				"Scale": "1 1 1",
 				"Variables": {}
 			},
 			"components": [
@@ -94,11 +94,6 @@
 					}
 				},
 				{
-					"type": "StaticSprite2D",
-					"id": 16777428,
-					"attributes": null
-				},
-				{
 					"type": "RigidBody2D",
 					"id": 16777429,
 					"attributes": {
@@ -106,7 +101,28 @@
 					}
 				}
 			],
-			"children": []
+			"children": [
+				{
+					"id": 16777245,
+					"attributes": {
+						"Is Enabled": true,
+						"Name": "Sprite",
+						"Tags": [],
+						"Position": "0 0 0",
+						"Rotation": "1 0 0 0",
+						"Scale": "1 1 1",
+						"Variables": {}
+					},
+					"components": [
+						{
+							"type": "StaticSprite2D",
+							"id": 16777443,
+							"attributes": null
+						}
+					],
+					"children": []
+				}
+			]
 		},
 		{
 			"id": 16777240,

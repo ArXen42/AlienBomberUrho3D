@@ -6,8 +6,8 @@
  *
  */
 
-#ifndef _Signal_H_
-#define _Signal_H_
+#ifndef _Signal_HPP_
+#define _Signal_HPP_
 
 #include "Delegate.hpp"
 #include <set>
@@ -655,4 +655,4 @@ public:
 
 } // namespace
 
-#endif //_SIGNAL_H_
+#endif //_SIGNAL_HPP_

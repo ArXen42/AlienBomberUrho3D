@@ -1,7 +1,9 @@
 #include "Game.h"
-#include "Terrain2DController.h"
 #include "PlaneController.h"
 #include "PlaneTouchLikeController.h"
+#include "TerrainController.hpp"
+#include "TerrainCollisionShapeController.hpp"
+#include "TerrainSpriteController.hpp"
 #include <Urho3D/Urho2D/PhysicsWorld2D.h>
 #include <Urho3D/Input/Input.h>
 
@@ -28,7 +30,9 @@ void Game::Stop() {
 void Game::LoadGameLevel() {
 	{
 		// Регистрация компонентов
-		Terrain2DController::RegisterObject(context_);
+		TerrainController::RegisterObject(context_);
+		TerrainCollisionShapeController::RegisterObject(context_);
+		TerrainSpriteController::RegisterObject(context_);
 		PlaneController::RegisterObject(context_);
 		PlaneTouchLikeController::RegisterObject(context_);
 	}
@@ -51,13 +55,17 @@ void Game::LoadGameLevel() {
 	{
 		// Инициализация своих компонентов на сцене
 		// (к сожалению, Urho3D не может их задавать в редакторе, в отличие от AngelScript скриптов)
-		scene_->GetChild("Terrain")->CreateComponent<Terrain2DController>();
+		auto terrainNode = scene_->GetChild("Terrain");
+		terrainNode->CreateComponent<TerrainController>();
+		terrainNode->CreateComponent<TerrainCollisionShapeController>();
+		terrainNode->GetChild("Sprite")->CreateComponent<TerrainSpriteController>();
+
 		auto plane = scene_->GetChild("Plane");
 		plane->CreateComponent<PlaneController>();
 		plane->CreateComponent<PlaneTouchLikeController>();
 	}
 }
 
-void Game::HandlePostRenderUpdate(StringHash eventType, VariantMap &eventData) {
-	scene_.Get()->GetComponent<PhysicsWorld2D>()->DrawDebugGeometry();
+void Game::HandlePostRenderUpdate(StringHash eventType, VariantMap& eventData) {
+//	scene_.Get()->GetComponent<PhysicsWorld2D>()->DrawDebugGeometry();
 }
