@@ -53,7 +53,7 @@ void Terrain2DController::UpdateSprite() {
 
 	int height = image->GetHeight();
 	int width = image->GetWidth();
-	uint32_t color = Color(0.1f, 0.6f, 0, 1).ToUInt();
+	uint32 color = Color(0.1f, 0.6f, 0, 1).ToUInt();
 
 	for (int column = 0; column < width; column++) {
 		uint heightmapIndex = (uint)((float)column*(heightmap_->Size() - 1)/(width - 1));
