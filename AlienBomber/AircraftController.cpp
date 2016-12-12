@@ -1,11 +1,6 @@
 #include "AircraftController.hpp"
-#include <Urho3D/Core/Context.h>
 #include <Urho3D/Scene/Node.h>
 #include <Urho3D/Urho2D/StaticSprite2D.h>
-
-void AircraftController::RegisterObject(Context* context) {
-	context->RegisterFactory<AircraftController>();
-}
 
 void AircraftController::Start() {
 	rigidBody2D_ = GetComponent<RigidBody2D>();

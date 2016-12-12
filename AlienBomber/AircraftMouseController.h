@@ -15,5 +15,5 @@ public:
 	void Start() override;
 
 private:
-	void HandleMouseButtonDown(StringHash eventType, VariantMap &eventData);
+	void HandleMouseButtonDown(StringHash eventType, VariantMap& eventData);
 };

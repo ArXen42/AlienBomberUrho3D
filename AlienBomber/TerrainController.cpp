@@ -40,3 +40,20 @@ bool TerrainController::IsHeightmapValid() {
 	}
 	return true;
 }
+void TerrainController::BlastDeform(unsigned int index, unsigned int radius, float depth) {
+	for (int i = index - radius; i <= index + radius; i++) {
+		if (i < 0 || i > heightmap_.Size() - 1) continue;
+
+//		heightmap_[i] -= radius*Sin(M_DEGTORAD*static_cast<float>(i - index)/(2*radius));
+
+		float delta = Abs(static_cast<float>(i) - index);
+		float factor = delta/radius;
+
+		float value = heightmap_[i] - (1 - factor*factor*factor)*depth;
+		heightmap_[i] = value > 0 ? value : 0;
+	}
+
+	URHO3D_LOGINFO("END");
+
+	heightmapUpdated_.Emit();
+}

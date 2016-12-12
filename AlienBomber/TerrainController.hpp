@@ -17,6 +17,8 @@ public:
 
 	Gallant::Signal0<void(void)> heightmapUpdated_;
 
+	void BlastDeform(unsigned int index, unsigned int radius, float depth);
+
 	const float terrainLength_ = 32;
 	const float maxTerrainHeight_ = 4;
 
