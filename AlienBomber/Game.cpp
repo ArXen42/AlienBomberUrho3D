@@ -1,6 +1,6 @@
 #include "Game.h"
-#include "PlaneController.h"
-#include "PlaneTouchLikeController.h"
+#include "AircraftController.hpp"
+#include "AircraftMouseController.h"
 #include "TerrainController.hpp"
 #include "TerrainCollisionShapeController.hpp"
 #include "TerrainSpriteController.hpp"
@@ -33,8 +33,8 @@ void Game::LoadGameLevel() {
 		TerrainController::RegisterObject(context_);
 		TerrainCollisionShapeController::RegisterObject(context_);
 		TerrainSpriteController::RegisterObject(context_);
-		PlaneController::RegisterObject(context_);
-		PlaneTouchLikeController::RegisterObject(context_);
+		AircraftController::RegisterObject(context_);
+		AircraftMouseController::RegisterObject(context_);
 	}
 
 	{
@@ -61,8 +61,8 @@ void Game::LoadGameLevel() {
 		terrainNode->GetChild("Sprite")->CreateComponent<TerrainSpriteController>();
 
 		auto plane = scene_->GetChild("Plane");
-		plane->CreateComponent<PlaneController>();
-		plane->CreateComponent<PlaneTouchLikeController>();
+		plane->CreateComponent<AircraftController>();
+		plane->CreateComponent<AircraftMouseController>();
 	}
 }
 
