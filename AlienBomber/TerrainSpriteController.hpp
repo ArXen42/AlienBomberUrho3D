@@ -1,5 +1,8 @@
+#pragma once
+
 #include <Urho3D/Core/Context.h>
 #include <Urho3D/Scene/LogicComponent.h>
+#include "TerrainController.hpp"
 
 using namespace Urho3D;
 
@@ -10,10 +13,11 @@ public:
 
 public:
 	TerrainSpriteController(Context* context) : LogicComponent(context) {}
-	~TerrainSpriteController() override;
 
 private:
 	void Start() override;
+	void Stop() override;
+
 	void InitializeSprite();
 	void OnHeightmapUpdated();
 
@@ -21,5 +25,7 @@ private:
 
 	unsigned int terrainResolutionX_;
 	unsigned int terrainResolutionY_;
+
+	WeakPtr<TerrainController> terrainController_;
 };
 

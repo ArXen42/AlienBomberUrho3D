@@ -1,6 +1,6 @@
 #include "Game.h"
 #include "AircraftController.hpp"
-#include "AircraftMouseController.h"
+#include "AircraftMouseController.hpp"
 #include "TerrainController.hpp"
 #include "TerrainCollisionShapeController.hpp"
 #include "TerrainSpriteController.hpp"

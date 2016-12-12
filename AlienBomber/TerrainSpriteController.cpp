@@ -10,12 +10,12 @@
 
 
 void TerrainSpriteController::Start() {
-	auto terrainController = GetNode()->GetParentComponent<TerrainController>();
-	terrainController->heightmapUpdated_.Connect(this,
-	                                             &TerrainSpriteController::OnHeightmapUpdated);
+	terrainController_ = GetNode()->GetParentComponent<TerrainController>();
+	terrainController_->heightmapUpdated_.Connect(this,
+	                                              &TerrainSpriteController::OnHeightmapUpdated);
 
-	terrainResolutionX_ = static_cast<unsigned int>(terrainController->terrainLength_*100);
-	terrainResolutionY_ = static_cast<unsigned int>(terrainController->maxTerrainHeight_*100);
+	terrainResolutionX_ = static_cast<unsigned int>(terrainController_->terrainLength_*100);
+	terrainResolutionY_ = static_cast<unsigned int>(terrainController_->maxTerrainHeight_*100);
 
 	InitializeSprite();
 }
@@ -34,8 +34,7 @@ void TerrainSpriteController::InitializeSprite() {
 }
 
 void TerrainSpriteController::OnHeightmapUpdated() {
-	auto terrainController = GetNode()->GetParentComponent<TerrainController>();
-	auto heightmap = terrainController->GetHeightmap();
+	auto heightmap = terrainController_->GetHeightmap();
 
 	auto image = new Image(context_);
 	image->SetSize(terrainResolutionX_, terrainResolutionY_, 4);
@@ -61,7 +60,7 @@ void TerrainSpriteController::OnHeightmapUpdated() {
 	GetComponent<StaticSprite2D>()->GetSprite()->GetTexture()->SetData(image);
 }
 
-TerrainSpriteController::~TerrainSpriteController() {
-	GetNode()->GetParentComponent<TerrainController>()->heightmapUpdated_.Disconnect(this,
-	                                                                                 &TerrainSpriteController::OnHeightmapUpdated);
+void TerrainSpriteController::Stop() {
+	if (!terrainController_.Expired())
+		terrainController_->heightmapUpdated_.Disconnect(this, &TerrainSpriteController::OnHeightmapUpdated);
 }

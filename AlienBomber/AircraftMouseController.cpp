@@ -1,4 +1,4 @@
-#include "AircraftMouseController.h"
+#include "AircraftMouseController.hpp"
 #include "AircraftController.hpp"
 #include <Urho3D/Input/InputEvents.h>
 #include <Urho3D/Input/Input.h>

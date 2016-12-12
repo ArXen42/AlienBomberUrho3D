@@ -3,8 +3,8 @@
 #include "TerrainController.hpp"
 
 void TerrainCollisionShapeController::Start() {
-	GetComponent<TerrainController>()->heightmapUpdated_.Connect(this,
-	                                                             &TerrainCollisionShapeController::OnHeightmapUpdated);
+	terrainController_ = GetComponent<TerrainController>();
+	terrainController_->heightmapUpdated_.Connect(this, &TerrainCollisionShapeController::OnHeightmapUpdated);
 }
 
 void TerrainCollisionShapeController::OnHeightmapUpdated() {
@@ -27,7 +27,7 @@ void TerrainCollisionShapeController::OnHeightmapUpdated() {
 	collisionChain->SetVertices(vertices);
 }
 
-TerrainCollisionShapeController::~TerrainCollisionShapeController() {
-	GetComponent<TerrainController>()->heightmapUpdated_.Disconnect(this,
-	                                                                &TerrainCollisionShapeController::OnHeightmapUpdated);
+void TerrainCollisionShapeController::Stop() {
+	if (!terrainController_.Expired())
+		terrainController_->heightmapUpdated_.Disconnect(this, &TerrainCollisionShapeController::OnHeightmapUpdated);
 }
