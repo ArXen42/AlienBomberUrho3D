@@ -4,6 +4,7 @@
 #include "TerrainController.hpp"
 #include "TerrainCollisionShapeController.hpp"
 #include "TerrainSpriteController.hpp"
+#include "ShellController.hpp"
 #include <Urho3D/Urho2D/PhysicsWorld2D.h>
 #include <Urho3D/Input/Input.h>
 
@@ -35,6 +36,7 @@ void Game::LoadGameLevel() {
 		TerrainSpriteController::RegisterObject(context_);
 		AircraftController::RegisterObject(context_);
 		AircraftMouseController::RegisterObject(context_);
+		ShellController::RegisterObject(context_);
 	}
 
 	{
@@ -63,9 +65,11 @@ void Game::LoadGameLevel() {
 		auto plane = scene_->GetChild("Plane");
 		plane->CreateComponent<AircraftController>();
 		plane->CreateComponent<AircraftMouseController>();
+
+		scene_->GetChild("Shell")->CreateComponent<ShellController>();
 	}
 }
 
 void Game::HandlePostRenderUpdate(StringHash eventType, VariantMap& eventData) {
-//	scene_.Get()->GetComponent<PhysicsWorld2D>()->DrawDebugGeometry();
+	scene_.Get()->GetComponent<PhysicsWorld2D>()->DrawDebugGeometry();
 }

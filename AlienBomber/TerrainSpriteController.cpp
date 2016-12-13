@@ -11,7 +11,7 @@
 
 void TerrainSpriteController::Start() {
 	terrainController_ = GetNode()->GetParentComponent<TerrainController>();
-	terrainController_->heightmapUpdated_.Connect(this,
+	terrainController_->HeightmapUpdated.Connect(this,
 	                                              &TerrainSpriteController::OnHeightmapUpdated);
 
 	terrainResolutionX_ = static_cast<unsigned int>(terrainController_->terrainLength_*100);
@@ -62,5 +62,5 @@ void TerrainSpriteController::OnHeightmapUpdated() {
 
 void TerrainSpriteController::Stop() {
 	if (!terrainController_.Expired())
-		terrainController_->heightmapUpdated_.Disconnect(this, &TerrainSpriteController::OnHeightmapUpdated);
+		terrainController_->HeightmapUpdated.Disconnect(this, &TerrainSpriteController::OnHeightmapUpdated);
 }

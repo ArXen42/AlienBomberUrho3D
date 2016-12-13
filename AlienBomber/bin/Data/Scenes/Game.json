@@ -8,8 +8,8 @@
 		"Elapsed Time": 3.15888,
 		"Next Replicated Node ID": 3,
 		"Next Replicated Component ID": 7,
-		"Next Local Node ID": 16777246,
-		"Next Local Component ID": 16777444,
+		"Next Local Node ID": 16777250,
+		"Next Local Component ID": 16777470,
 		"Variables": {},
 		"Variable Names": ""
 	},
@@ -161,6 +161,38 @@
 					"id": 16777430,
 					"attributes": {
 						"Sprite": "Sprite2D;Sprites/Plane.png"
+					}
+				}
+			],
+			"children": []
+		},
+		{
+			"id": 16777248,
+			"attributes": {
+				"Is Enabled": true,
+				"Name": "Shell",
+				"Tags": [],
+				"Position": "6.93693 0 0",
+				"Rotation": "1 0 0 0",
+				"Scale": "1 1 1",
+				"Variables": {}
+			},
+			"components": [
+				{
+					"type": "RigidBody2D",
+					"id": 16777456,
+					"attributes": {
+						"Body Type": "Dynamic",
+						"Mass": 1
+					}
+				},
+				{
+					"type": "CollisionBox2D",
+					"id": 16777457,
+					"attributes": {
+						"Size": "0.2 0.3",
+						"Category Bits": 1,
+						"Mask Bits": 65535
 					}
 				}
 			],

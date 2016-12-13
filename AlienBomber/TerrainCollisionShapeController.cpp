@@ -4,7 +4,7 @@
 
 void TerrainCollisionShapeController::Start() {
 	terrainController_ = GetComponent<TerrainController>();
-	terrainController_->heightmapUpdated_.Connect(this, &TerrainCollisionShapeController::OnHeightmapUpdated);
+	terrainController_->HeightmapUpdated.Connect(this, &TerrainCollisionShapeController::OnHeightmapUpdated);
 }
 
 void TerrainCollisionShapeController::OnHeightmapUpdated() {
@@ -29,5 +29,5 @@ void TerrainCollisionShapeController::OnHeightmapUpdated() {
 
 void TerrainCollisionShapeController::Stop() {
 	if (!terrainController_.Expired())
-		terrainController_->heightmapUpdated_.Disconnect(this, &TerrainCollisionShapeController::OnHeightmapUpdated);
+		terrainController_->HeightmapUpdated.Disconnect(this, &TerrainCollisionShapeController::OnHeightmapUpdated);
 }
