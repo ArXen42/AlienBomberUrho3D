@@ -7,13 +7,13 @@
 using namespace Urho3D;
 
 /// Контроллирует перемещение самолета и предоставляет интерфейс для управления полетом.
-class AircraftController : public LogicComponent {
-URHO3D_OBJECT(AircraftController, LogicComponent);
+class AircraftMovingController : public LogicComponent {
+URHO3D_OBJECT(AircraftMovingController, LogicComponent);
 public:
-	static void RegisterObject(Context* context) { context->RegisterFactory<AircraftController>(); }
+	static void RegisterObject(Context* context) { context->RegisterFactory<AircraftMovingController>(); }
 
 public:
-	AircraftController(Context* context) : LogicComponent(context) {}
+	AircraftMovingController(Context* context) : LogicComponent(context) {}
 
 	void SetTargetPosition(const Vector2& position);
 	void SetTargetRotation(float rotation);

@@ -1,10 +1,10 @@
 #include "Game.h"
-#include "AircraftController.hpp"
+#include "AircraftMovingController.hpp"
 #include "AircraftMouseController.hpp"
 #include "TerrainController.hpp"
 #include "TerrainCollisionShapeController.hpp"
 #include "TerrainSpriteController.hpp"
-#include "ShellController.hpp"
+#include "AircraftBombsController.hpp"
 #include <Urho3D/Urho2D/PhysicsWorld2D.h>
 #include <Urho3D/Input/Input.h>
 
@@ -34,8 +34,9 @@ void Game::LoadGameLevel() {
 		TerrainController::RegisterObject(context_);
 		TerrainCollisionShapeController::RegisterObject(context_);
 		TerrainSpriteController::RegisterObject(context_);
-		AircraftController::RegisterObject(context_);
+		AircraftMovingController::RegisterObject(context_);
 		AircraftMouseController::RegisterObject(context_);
+		AircraftBombsController::RegisterObject(context_);
 		ShellController::RegisterObject(context_);
 	}
 
@@ -62,11 +63,10 @@ void Game::LoadGameLevel() {
 		terrainNode->CreateComponent<TerrainCollisionShapeController>();
 		terrainNode->GetChild("Sprite")->CreateComponent<TerrainSpriteController>();
 
-		auto plane = scene_->GetChild("Plane");
-		plane->CreateComponent<AircraftController>();
-		plane->CreateComponent<AircraftMouseController>();
-
-		scene_->GetChild("Shell")->CreateComponent<ShellController>();
+		auto airplane = scene_->GetChild("Airplane");
+		airplane->CreateComponent<AircraftMovingController>();
+		airplane->CreateComponent<AircraftMouseController>();
+		airplane->CreateComponent<AircraftBombsController>();
 	}
 }
 

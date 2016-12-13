@@ -1,5 +1,5 @@
 #include "AircraftMouseController.hpp"
-#include "AircraftController.hpp"
+#include "AircraftMovingController.hpp"
 #include <Urho3D/Input/InputEvents.h>
 #include <Urho3D/Input/Input.h>
 #include <Urho3D/Graphics/Camera.h>
@@ -16,5 +16,5 @@ void AircraftMouseController::HandleMouseButtonDown(StringHash eventType, Varian
 	auto camera = GetScene()->GetChild("MainCamera")->GetComponent<Camera>();
 
 	Vector3 clickPosition = camera->ScreenToWorldPoint(normalizedMousePosition);
-	GetComponent<AircraftController>()->SetTargetPosition({clickPosition.x_, clickPosition.y_});
+	GetComponent<AircraftMovingController>()->SetTargetPosition({clickPosition.x_, clickPosition.y_});
 }

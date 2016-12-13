@@ -10,10 +10,13 @@ void ShellController::Start() {
 }
 
 void ShellController::OnPhysicsBeginContact2D(StringHash eventType, VariantMap& eventData) {
-	UnsubscribeFromAllEvents();
 
 	auto nodeA = dynamic_cast<Node*>(eventData[PhysicsBeginContact2D::P_NODEA].GetPtr());
 	auto nodeB = dynamic_cast<Node*>(eventData[PhysicsBeginContact2D::P_NODEB].GetPtr());
+
+	if (nodeA != GetNode() && nodeB != GetNode()) return;
+
+	UnsubscribeFromAllEvents();
 
 	auto collidedNode = nodeB == GetNode() ? nodeA : nodeB;
 

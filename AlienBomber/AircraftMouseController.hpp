@@ -8,9 +8,10 @@ using namespace Urho3D;
 class AircraftMouseController : public LogicComponent {
 URHO3D_OBJECT(AircraftMouseController, LogicComponent);
 public:
-	AircraftMouseController(Context* context) : LogicComponent(context) {}
-
 	static void RegisterObject(Context* context) { context->RegisterFactory<AircraftMouseController>(); }
+
+public:
+	AircraftMouseController(Context* context) : LogicComponent(context) {}
 
 	void Start() override;
 
