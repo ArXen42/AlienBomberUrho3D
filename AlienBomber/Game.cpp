@@ -5,6 +5,7 @@
 #include "TerrainCollisionShapeController.hpp"
 #include "TerrainSpriteController.hpp"
 #include "AircraftBombsController.hpp"
+#include "CameraController.hpp"
 #include <Urho3D/Urho2D/PhysicsWorld2D.h>
 #include <Urho3D/Input/Input.h>
 
@@ -34,6 +35,7 @@ void Game::LoadGameLevel() {
 		TerrainController::RegisterObject(context_);
 		TerrainCollisionShapeController::RegisterObject(context_);
 		TerrainSpriteController::RegisterObject(context_);
+		CameraController::RegisterObject(context_);
 		AircraftMovingController::RegisterObject(context_);
 		AircraftMouseController::RegisterObject(context_);
 		AircraftBombsController::RegisterObject(context_);
@@ -49,10 +51,9 @@ void Game::LoadGameLevel() {
 	}
 
 	{
-		// Установка Viewport
-		auto camera = scene_.Get()->GetChild("MainCamera")->GetComponent<Camera>();
-		auto viewport = new Viewport(context_, scene_, camera);
-		GetSubsystem<Renderer>()->SetViewport(0, viewport);
+		// Установка Viewport и масштабирование камеры
+		auto cameraNode = scene_->GetChild("MainCamera");
+		cameraNode->CreateComponent<CameraController>();
 	}
 
 	{
@@ -71,5 +72,5 @@ void Game::LoadGameLevel() {
 }
 
 void Game::HandlePostRenderUpdate(StringHash eventType, VariantMap& eventData) {
-	scene_.Get()->GetComponent<PhysicsWorld2D>()->DrawDebugGeometry();
+	scene_->GetComponent<PhysicsWorld2D>()->DrawDebugGeometry();
 }

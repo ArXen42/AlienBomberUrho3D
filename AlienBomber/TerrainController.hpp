@@ -13,15 +13,15 @@ URHO3D_OBJECT(TerrainController, LogicComponent);
 public:
 	static void RegisterObject(Context* context) { context->RegisterFactory<TerrainController>(); }
 
+	static const float TERRAIN_LENGTH;
+	static const float MAX_TERRAIN_HEIGHT;
+
 public:
 	TerrainController(Context* context) : LogicComponent(context) {}
 
 	const Vector<float>* GetHeightmap() const { return &heightmap_; }
 
 	Gallant::Signal0<void> HeightmapUpdated;
-
-	const float terrainLength_ = 32;
-	const float maxTerrainHeight_ = 4;
 
 private:
 	//Использование DelayedStart позволяет "дождаться" создания и подписки зависимых компонентов

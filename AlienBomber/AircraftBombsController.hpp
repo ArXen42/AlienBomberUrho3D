@@ -9,8 +9,6 @@ class AircraftBombsController : public LogicComponent {
 URHO3D_OBJECT(AircraftBombsController, LogicComponent);
 public:
 	static void RegisterObject(Context* context) { context->RegisterFactory<AircraftBombsController>(); }
-//private:
-//	static unsigned int id
 
 public:
 	AircraftBombsController(Context* context) : LogicComponent(context) {}

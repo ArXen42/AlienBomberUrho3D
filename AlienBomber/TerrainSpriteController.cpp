@@ -4,9 +4,6 @@
 #include <Urho3D/Urho2D/StaticSprite2D.h>
 #include <Urho3D/Scene/Node.h>
 #include "TerrainSpriteController.hpp"
-#include "TerrainController.hpp"
-#include <cmath>
-#include <Urho3D/IO/Log.h>
 
 
 void TerrainSpriteController::Start() {
@@ -14,8 +11,8 @@ void TerrainSpriteController::Start() {
 	terrainController_->HeightmapUpdated.Connect(this,
 	                                              &TerrainSpriteController::OnHeightmapUpdated);
 
-	terrainResolutionX_ = static_cast<unsigned int>(terrainController_->terrainLength_*100);
-	terrainResolutionY_ = static_cast<unsigned int>(terrainController_->maxTerrainHeight_*100);
+	terrainResolutionX_ = static_cast<unsigned int>(TerrainController::TERRAIN_LENGTH*100);
+	terrainResolutionY_ = static_cast<unsigned int>(TerrainController::MAX_TERRAIN_HEIGHT*100);
 
 	InitializeSprite();
 }

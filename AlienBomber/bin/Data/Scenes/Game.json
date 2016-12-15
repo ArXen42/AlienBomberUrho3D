@@ -8,8 +8,8 @@
 		"Elapsed Time": 3.15888,
 		"Next Replicated Node ID": 3,
 		"Next Replicated Component ID": 7,
-		"Next Local Node ID": 16777250,
-		"Next Local Component ID": 16777470,
+		"Next Local Node ID": 16777251,
+		"Next Local Component ID": 16777482,
 		"Variables": {},
 		"Variable Names": ""
 	},
@@ -79,7 +79,7 @@
 				"Is Enabled": true,
 				"Name": "Terrain",
 				"Tags": [],
-				"Position": "0 -5 0",
+				"Position": "0 0 0",
 				"Rotation": "1 0 0 0",
 				"Scale": "1 1 1",
 				"Variables": {}
@@ -130,7 +130,7 @@
 				"Is Enabled": true,
 				"Name": "Airplane",
 				"Tags": [],
-				"Position": "1.29992 1.53113 0",
+				"Position": "1.5 6 0",
 				"Rotation": "-4.37114e-08 0 1 -0",
 				"Scale": "2 2.5 2",
 				"Variables": {}

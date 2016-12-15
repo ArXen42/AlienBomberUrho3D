@@ -5,6 +5,9 @@
 
 Gallant::Signal2<ShellController*, Node*> ShellController::SomeShellExploded = {};
 
+const float TerrainController::TERRAIN_LENGTH = 32;
+const float TerrainController::MAX_TERRAIN_HEIGHT = 4;
+
 void TerrainController::DelayedStart() {
 	ShellController::SomeShellExploded.Connect(this, &TerrainController::OnSomeShellExploded);
 
@@ -19,7 +22,7 @@ void TerrainController::OnSomeShellExploded(ShellController* shell, Node* collid
 	if (collidedNode != GetNode()) return;
 
 	float deltaX = shell->GetNode()->GetPosition2D().x_ - GetNode()->GetPosition2D().x_;
-	float normalizedX = deltaX/terrainLength_ + 0.5f;
+	float normalizedX = deltaX/TERRAIN_LENGTH + 0.5f;
 	assert(normalizedX >= 0 && normalizedX <= 1);
 
 	unsigned int index = static_cast<unsigned int>((heightmap_.Size() - 1)*normalizedX);
