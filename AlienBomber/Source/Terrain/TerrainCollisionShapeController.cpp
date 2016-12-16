@@ -18,7 +18,7 @@ void TerrainCollisionShapeController::OnHeightmapUpdated() {
 	const float terrainMaxHeight = TerrainController::MAX_TERRAIN_HEIGHT;
 
 	//Генерация координат вершин CollisionChain из карты высот и параметров размера ландшафта
-	auto& vertices = *new PODVector<Vector2>(heightmapSize);
+	auto vertices = PODVector<Vector2>(heightmapSize);
 	for (unsigned int i = 0; i < heightmapSize; i++) {
 		vertices[i] = Vector2(i*terrainLength_/(heightmapSize - 1), heightmap->At(i)*terrainMaxHeight) -
 		              Vector2(terrainLength_/2, terrainMaxHeight/2);

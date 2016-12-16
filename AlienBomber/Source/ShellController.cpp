@@ -11,10 +11,6 @@ void ShellController::Start() {
 }
 
 void ShellController::OnTerrainCollision(Node* terrainNode) {
-	GetComponent<CollisionsAggregator>()
-			->GetSignal(TerrainCollider::GetTypeInfoStatic())
-			->Disconnect(this, &ShellController::OnTerrainCollision);
-
 	Exploded.Emit(terrainNode);
 	SomeShellExploded.Emit(this, terrainNode);
 

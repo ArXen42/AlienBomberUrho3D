@@ -16,7 +16,7 @@ public:
 private:
 	void Start() override;
 
-	void DropBomp();
+	void DropBomb();
 	void HandleKeyDown(StringHash eventType, VariantMap& eventData);
 };
 

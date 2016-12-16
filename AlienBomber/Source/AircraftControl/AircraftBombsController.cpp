@@ -12,7 +12,7 @@ void AircraftBombsController::Start() {
 	SubscribeToEvent(E_KEYDOWN, URHO3D_HANDLER(AircraftBombsController, AircraftBombsController::HandleKeyDown));
 }
 
-void AircraftBombsController::DropBomp() {
+void AircraftBombsController::DropBomb() {
 	auto resourceCache = GetSubsystem<ResourceCache>();
 	auto jsonPrefabFile = resourceCache->GetResource<JSONFile>("Data/Prefabs/Bomb.json");
 	auto jsonValue = jsonPrefabFile->GetRoot();
@@ -27,5 +27,5 @@ void AircraftBombsController::DropBomp() {
 void AircraftBombsController::HandleKeyDown(StringHash eventType, VariantMap& eventData) {
 	if (eventData[KeyDown::P_KEY].GetInt() != KEY_SPACE) return;
 
-	DropBomp();
+	DropBomb();
 }
