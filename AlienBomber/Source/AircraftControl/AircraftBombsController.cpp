@@ -1,5 +1,5 @@
 #include "AircraftBombsController.hpp"
-#include "ShellController.hpp"
+#include "../ShellController.hpp"
 #include <Urho3D/Input/InputEvents.h>
 #include <Urho3D/Scene/Scene.h>
 #include <Urho3D/IO/Log.h>

@@ -1,10 +1,10 @@
 #include "Game.h"
-#include "AircraftMovingController.hpp"
-#include "AircraftMouseController.hpp"
-#include "TerrainController.hpp"
-#include "TerrainCollisionShapeController.hpp"
-#include "TerrainSpriteController.hpp"
-#include "AircraftBombsController.hpp"
+#include "AircraftControl/AircraftMovingController.hpp"
+#include "AircraftControl/AircraftMouseController.hpp"
+#include "Terrain/TerrainController.hpp"
+#include "Terrain/TerrainCollisionShapeController.hpp"
+#include "Terrain/TerrainSpriteController.hpp"
+#include "AircraftControl/AircraftBombsController.hpp"
 #include "CameraController.hpp"
 #include <Urho3D/Urho2D/PhysicsWorld2D.h>
 #include <Urho3D/Input/Input.h>

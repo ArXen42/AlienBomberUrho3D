@@ -31,6 +31,9 @@ include(Urho3D-CMake-common)
 find_package(Urho3D REQUIRED)
 include_directories(${URHO3D_INCLUDE_DIRS})
 # Define source files
-define_source_files()
+define_source_files(
+        GLOB_CPP_PATTERNS Source/*.cpp
+        GLOB_H_PATTERNS *.hpp Source/*.hpp
+        RECURSE true)
 # Setup target with resource copying
 setup_main_executable()

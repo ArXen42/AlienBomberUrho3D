@@ -2,8 +2,8 @@
 
 #include <Urho3D/Scene/LogicComponent.h>
 #include <Urho3D/Core/Context.h>
-#include "Signal.hpp"
-#include "ShellController.hpp"
+#include "../ThirdParty/Signals/Signal.hpp"
+#include "../ShellController.hpp"
 
 using namespace Urho3D;
 

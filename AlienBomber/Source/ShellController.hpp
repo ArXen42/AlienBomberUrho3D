@@ -2,7 +2,7 @@
 
 #include <Urho3D/Core/Context.h>
 #include <Urho3D/Scene/LogicComponent.h>
-#include "Signal.hpp"
+#include "ThirdParty/Signals/Signal.hpp"
 
 using namespace Urho3D;
 

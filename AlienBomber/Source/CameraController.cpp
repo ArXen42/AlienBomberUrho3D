@@ -3,7 +3,7 @@
 #include <Urho3D/Graphics/Viewport.h>
 #include <Urho3D/Graphics/Renderer.h>
 #include "CameraController.hpp"
-#include "TerrainController.hpp"
+#include "Terrain/TerrainController.hpp"
 
 void CameraController::Start() {
 	auto camera = GetComponent<Camera>();
