@@ -22,6 +22,5 @@ public:
 
 private:
 	void Start() override;
-	void OnPhysicsBeginContact2D(StringHash eventType, VariantMap& eventData);
+	void OnTerrainCollision(Node* terrainNode);
 };
-

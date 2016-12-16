@@ -1,5 +1,6 @@
 #include "AircraftBombsController.hpp"
 #include "../ShellController.hpp"
+#include "../CollisionDetection/CollisionsAggregator.hpp"
 #include <Urho3D/Input/InputEvents.h>
 #include <Urho3D/Scene/Scene.h>
 #include <Urho3D/IO/Log.h>
@@ -18,6 +19,7 @@ void AircraftBombsController::DropBomp() {
 
 	auto bomb = GetScene()->CreateChild("Bomb", LOCAL);
 	bomb->LoadJSON(jsonValue);
+	bomb->CreateComponent<CollisionsAggregator>();
 	bomb->CreateComponent<ShellController>();
 	bomb->SetPosition2D(GetNode()->GetPosition2D() + Vector2::DOWN*0.6f);
 }

@@ -1,26 +1,23 @@
 #include "ShellController.hpp"
-#include <Urho3D/Urho2D/PhysicsEvents2D.h>
-#include <Urho3D/IO/Log.h>
+#include "CollisionDetection/CollisionsAggregator.hpp"
+#include "CollisionDetection/TerrainCollider.hpp"
 #include <Urho3D/Scene/Node.h>
 #include <Urho3D/Scene/Scene.h>
 
 void ShellController::Start() {
-	SubscribeToEvent(E_PHYSICSBEGINCONTACT2D, URHO3D_HANDLER(ShellController, OnPhysicsBeginContact2D));
+	GetComponent<CollisionsAggregator>()
+			->GetSignal(TerrainCollider::GetTypeInfoStatic())
+			->Connect(this, &ShellController::OnTerrainCollision);
 }
 
-void ShellController::OnPhysicsBeginContact2D(StringHash eventType, VariantMap& eventData) {
+void ShellController::OnTerrainCollision(Node* terrainNode) {
+	GetComponent<CollisionsAggregator>()
+			->GetSignal(TerrainCollider::GetTypeInfoStatic())
+			->Disconnect(this, &ShellController::OnTerrainCollision);
 
-	auto nodeA = dynamic_cast<Node*>(eventData[PhysicsBeginContact2D::P_NODEA].GetPtr());
-	auto nodeB = dynamic_cast<Node*>(eventData[PhysicsBeginContact2D::P_NODEB].GetPtr());
-
-	if (nodeA != GetNode() && nodeB != GetNode()) return;
-
-	UnsubscribeFromAllEvents();
-
-	auto collidedNode = nodeB == GetNode() ? nodeA : nodeB;
-
-	Exploded.Emit(collidedNode);
-	SomeShellExploded.Emit(this, collidedNode);
+	Exploded.Emit(terrainNode);
+	SomeShellExploded.Emit(this, terrainNode);
 
 	GetNode()->Remove();
 }
+
