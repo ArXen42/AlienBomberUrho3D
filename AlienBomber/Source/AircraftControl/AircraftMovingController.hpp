@@ -24,6 +24,6 @@ private:
 	void Start() override;
 	void Update(float timeStep) override;
 
-	float velocityMagnitude_ = 3;
+	float velocityMagnitude_ = 0.8f;
 	RigidBody2D* rigidBody2D_;
 };

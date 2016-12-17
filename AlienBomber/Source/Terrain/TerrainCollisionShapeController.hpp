@@ -15,7 +15,7 @@ public:
 private:
 	void Start() override;
 	void Stop() override;
-	void OnHeightmapUpdated();
+	void OnHeightmapUpdated(HeightmapUpdateDiff diff);
 
 	WeakPtr<TerrainController> terrainController_;
 };

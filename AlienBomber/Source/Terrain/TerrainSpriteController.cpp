@@ -9,7 +9,7 @@
 void TerrainSpriteController::Start() {
 	terrainController_ = GetNode()->GetParentComponent<TerrainController>();
 	terrainController_->HeightmapUpdated.Connect(this,
-	                                              &TerrainSpriteController::OnHeightmapUpdated);
+	                                             &TerrainSpriteController::OnHeightmapUpdated);
 
 	terrainResolutionX_ = static_cast<unsigned int>(TerrainController::TERRAIN_LENGTH*100);
 	terrainResolutionY_ = static_cast<unsigned int>(TerrainController::MAX_TERRAIN_HEIGHT*100);
@@ -30,9 +30,10 @@ void TerrainSpriteController::InitializeSprite() {
 	GetComponent<StaticSprite2D>()->SetSprite(sprite);
 }
 
-void TerrainSpriteController::OnHeightmapUpdated() {
+void TerrainSpriteController::OnHeightmapUpdated(HeightmapUpdateDiff diff) {
 	auto heightmap = terrainController_->GetHeightmap();
 
+	//TODO: при необходимости оптимизировать с использованием diff и прямого доступа к точкам изображения
 	Image image(context_);
 	image.SetSize(terrainResolutionX_, terrainResolutionY_, 4);
 

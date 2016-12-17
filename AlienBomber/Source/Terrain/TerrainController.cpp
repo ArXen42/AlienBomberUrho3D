@@ -42,7 +42,7 @@ void TerrainController::GenerateHeightmap(float startHeight, float endHeight, fl
 		URHO3D_LOGINFO("Invalid heightmap, generating another one...");
 	}
 
-	HeightmapUpdated.Emit();
+	HeightmapUpdated.Emit({0, size - 1});
 }
 
 void TerrainController::MidpointDisplacement1D(unsigned int l, unsigned int r, float roughness) {
@@ -76,5 +76,6 @@ void TerrainController::BlastDeform(unsigned int index, unsigned int radius, flo
 		heightmap_[i] = value > 0 ? value : 0;
 	}
 
-	HeightmapUpdated.Emit();
+	HeightmapUpdated.Emit({index - radius, index + radius});
 }
+

@@ -7,6 +7,17 @@
 
 using namespace Urho3D;
 
+struct HeightmapUpdateDiff {
+	HeightmapUpdateDiff(const unsigned int startIndex, const unsigned int endIndex) : startIndex_(startIndex),
+	                                                                                  endIndex_(endIndex) {
+		assert(startIndex > 0);
+		assert(endIndex >= startIndex);
+	}
+
+	const unsigned int startIndex_;
+	const unsigned int endIndex_;
+};
+
 /// Основной контроллер ландшафта, представляет карту высот.
 class TerrainController : public LogicComponent {
 URHO3D_OBJECT(TerrainController, LogicComponent);
@@ -21,7 +32,7 @@ public:
 
 	const Vector<float>* GetHeightmap() const { return &heightmap_; }
 
-	Gallant::Signal0<void> HeightmapUpdated;
+	Gallant::Signal1<HeightmapUpdateDiff> HeightmapUpdated;
 
 private:
 	//Использование DelayedStart позволяет "дождаться" создания и подписки зависимых компонентов
@@ -40,4 +51,3 @@ private:
 
 	Vector<float> heightmap_ = Vector<float>(256);
 };
-

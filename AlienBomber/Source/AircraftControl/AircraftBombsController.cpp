@@ -6,7 +6,6 @@
 #include <Urho3D/IO/Log.h>
 #include <Urho3D/Resource/ResourceCache.h>
 #include <Urho3D/Urho2D/RigidBody2D.h>
-#include <Urho3D/Resource/JSONValue.h>
 
 void AircraftBombsController::Start() {
 	SubscribeToEvent(E_KEYDOWN, URHO3D_HANDLER(AircraftBombsController, AircraftBombsController::HandleKeyDown));

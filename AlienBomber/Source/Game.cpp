@@ -14,7 +14,6 @@
 #include "CollisionDetection/LowerHorizontalBoundCollider.hpp"
 #include <Urho3D/Urho2D/PhysicsWorld2D.h>
 #include <Urho3D/Input/Input.h>
-#include <Urho3D/Scene/Animatable.h>
 
 void Game::Setup() {
 	engineParameters_["FullScreen"] = false;

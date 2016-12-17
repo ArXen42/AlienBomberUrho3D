@@ -19,7 +19,7 @@ private:
 	void Stop() override;
 
 	void InitializeSprite();
-	void OnHeightmapUpdated();
+	void OnHeightmapUpdated(HeightmapUpdateDiff diff);
 
 	float Lerp(float from, float to, float factor) { return from + (to - from)*factor; }
 
