@@ -1,3 +1,5 @@
+// This is a personal academic project. Dear PVS-Studio, please check it.
+// PVS-Studio Static Code Analyzer for C, C++ and C#: http://www.viva64.com
 #include <Urho3D/Scene/Node.h>
 #include <Urho3D/Core/Timer.h>
 #include <Urho3D/IO/Log.h>

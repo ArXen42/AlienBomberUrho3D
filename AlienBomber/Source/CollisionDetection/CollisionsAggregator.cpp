@@ -1,3 +1,5 @@
+// This is a personal academic project. Dear PVS-Studio, please check it.
+// PVS-Studio Static Code Analyzer for C, C++ and C#: http://www.viva64.com
 #include <Urho3D/Core/Object.h>
 #include <Urho3D/Scene/Node.h>
 #include <Urho3D/Urho2D/PhysicsEvents2D.h>
@@ -26,7 +28,7 @@ void CollisionsAggregator::OnPhysicsBeginContact2D(StringHash eventType, Variant
 	if (nodeA != node_ && nodeB != node_) return;
 
 	auto collidedNode = nodeB == node_ ? nodeA : nodeB;
-	auto staticColliderComponent = collidedNode->GetComponent<StaticColliderComponent>();
+	auto staticColliderComponent = collidedNode->GetDerivedComponent<StaticColliderComponent>();
 	if (staticColliderComponent == nullptr) return;
 
 	SharedPtr<Gallant::Signal1<Node*>> signal;

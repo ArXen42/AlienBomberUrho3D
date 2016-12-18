@@ -23,8 +23,8 @@ private:
 
 	float Lerp(float from, float to, float factor) { return from + (to - from)*factor; }
 
-	unsigned int terrainResolutionX_;
-	unsigned int terrainResolutionY_;
+	unsigned int terrainResolutionX_ = 0;
+	unsigned int terrainResolutionY_ = 0;
 
 	WeakPtr<TerrainController> terrainController_;
 };

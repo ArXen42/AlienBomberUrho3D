@@ -23,7 +23,7 @@ endif ()
 # Set CMake modules search path
 set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/CMake/Modules)
 
-set (CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 11)
 
 # Include Urho3D Cmake common module
 include(Urho3D-CMake-common)
@@ -37,3 +37,13 @@ define_source_files(
         RECURSE true)
 # Setup target with resource copying
 setup_main_executable()
+
+# Integration with PVS-Studio
+include("PVS-Studio")
+pvs_studio_add_target(
+        TARGET analyze ALL
+        OUTPUT FORMAT errorfile
+        PREPROCESSOR clang
+        ANALYZE AlienBomber
+        CXX_FLAGS ${PREPROCESSOR_ADDITIONAL_FLAGS}
+        C_FLAGS ${PREPROCESSOR_ADDITIONAL_FLAGS})
