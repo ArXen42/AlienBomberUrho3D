@@ -8,8 +8,8 @@
 		"Elapsed Time": 3.15888,
 		"Next Replicated Node ID": 3,
 		"Next Replicated Component ID": 7,
-		"Next Local Node ID": 16777251,
-		"Next Local Component ID": 16777482,
+		"Next Local Node ID": 16777253,
+		"Next Local Component ID": 16777496,
 		"Variables": {},
 		"Variable Names": ""
 	},
@@ -128,7 +128,7 @@
 			"id": 16777240,
 			"attributes": {
 				"Is Enabled": true,
-				"Name": "Airplane",
+				"Name": "Aircraft",
 				"Tags": [],
 				"Position": "1.5 6 0",
 				"Rotation": "-4.37114e-08 0 1 -0",
@@ -161,6 +161,36 @@
 					"id": 16777430,
 					"attributes": {
 						"Sprite": "Sprite2D;Sprites/Plane.png"
+					}
+				}
+			],
+			"children": []
+		},
+		{
+			"id": 16777252,
+			"attributes": {
+				"Is Enabled": true,
+				"Name": "UpperBound",
+				"Tags": [],
+				"Position": "0 0 0",
+				"Rotation": "1 0 0 0",
+				"Scale": "1 1 1",
+				"Variables": {}
+			},
+			"components": [
+				{
+					"type": "RigidBody2D",
+					"id": 16777494,
+					"attributes": {
+						"Body Type": "Kinematic"
+					}
+				},
+				{
+					"type": "CollisionEdge2D",
+					"id": 16777495,
+					"attributes": {
+						"Category Bits": 1,
+						"Mask Bits": 65535
 					}
 				}
 			],

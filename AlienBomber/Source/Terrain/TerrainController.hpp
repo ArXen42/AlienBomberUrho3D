@@ -10,7 +10,7 @@ using namespace Urho3D;
 struct HeightmapUpdateDiff {
 	HeightmapUpdateDiff(const unsigned int startIndex, const unsigned int endIndex) : startIndex_(startIndex),
 	                                                                                  endIndex_(endIndex) {
-		assert(startIndex > 0);
+		assert(startIndex >= 0);
 		assert(endIndex >= startIndex);
 	}
 

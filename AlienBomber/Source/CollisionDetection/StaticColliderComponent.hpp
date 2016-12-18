@@ -1,6 +1,7 @@
 #pragma once
 
 #include <Urho3D/Scene/LogicComponent.h>
+#include <Urho3D/IO/Log.h>
 
 using namespace Urho3D;
 

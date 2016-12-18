@@ -81,10 +81,13 @@ void Game::LoadGameLevel() {
 		terrainNode->CreateComponent<TerrainCollider>();
 		terrainNode->GetChild("Sprite")->CreateComponent<TerrainSpriteController>();
 
-		auto airplane = scene_->GetChild("Airplane");
-		airplane->CreateComponent<AircraftMovingController>();
-		airplane->CreateComponent<AircraftMouseController>();
-		airplane->CreateComponent<AircraftBombsController>();
+		auto aircraft = scene_->GetChild("Aircraft");
+		aircraft->CreateComponent<AircraftMovingController>();
+		aircraft->CreateComponent<AircraftMouseController>();
+		aircraft->CreateComponent<AircraftBombsController>();
+
+		auto upperBoundNode = scene_->GetChild("UpperBound");
+		upperBoundNode->CreateComponent<UpperBoundCollider>();
 	}
 }
 

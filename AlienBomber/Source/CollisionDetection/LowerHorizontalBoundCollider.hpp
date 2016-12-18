@@ -4,7 +4,7 @@
 #include "StaticColliderComponent.hpp"
 
 class LowerHorizontalBoundCollider : public StaticColliderComponent {
-URHO3D_OBJECT(StaticColliderComponent, LogicComponent);
+URHO3D_OBJECT(LowerHorizontalBoundCollider, StaticColliderComponent);
 public:
 	static void RegisterObject(Context* context) { context->RegisterFactory<LowerHorizontalBoundCollider>(); }
 
