@@ -48,5 +48,5 @@ private:
 	/// Деформирует ландшафт в указанной точке.
 	void BlastDeform(unsigned int index, unsigned int radius, float depth);
 
-	Vector<float> heightmap_ = Vector<float>(256);
+	Vector<float> heightmap_ = Vector<float>(1024);
 };

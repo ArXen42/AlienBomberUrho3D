@@ -12,7 +12,7 @@ class Game : public Application {
 public:
 	SharedPtr<Scene> scene_;
 
-	Game(Context *context) : Application(context) {}
+	Game(Context* context) : Application(context) {}
 
 	virtual void Setup();
 
@@ -20,7 +20,7 @@ public:
 
 	virtual void Stop();
 
-	void HandlePostRenderUpdate(StringHash eventType, VariantMap &eventData);
+	void HandlePostRenderUpdate(StringHash eventType, VariantMap& eventData);
 
 private:
 	/// Загружает пока единственный уровень игры из json и инициализирует компоненты.

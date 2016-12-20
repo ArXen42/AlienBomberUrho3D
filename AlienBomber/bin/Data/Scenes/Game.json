@@ -8,8 +8,8 @@
 		"Elapsed Time": 3.15888,
 		"Next Replicated Node ID": 3,
 		"Next Replicated Component ID": 7,
-		"Next Local Node ID": 16777253,
-		"Next Local Component ID": 16777496,
+		"Next Local Node ID": 16777256,
+		"Next Local Component ID": 16777512,
 		"Variables": {},
 		"Variable Names": ""
 	},
@@ -142,6 +142,7 @@
 					"attributes": {
 						"Size": "0.65 0.1",
 						"Center": "-0.025 -0.05",
+						"Trigger": true,
 						"Category Bits": 1,
 						"Mask Bits": 65535
 					}
@@ -150,10 +151,11 @@
 					"type": "RigidBody2D",
 					"id": 16777397,
 					"attributes": {
-						"Body Type": "Kinematic",
+						"Body Type": "Dynamic",
 						"Mass": 1,
 						"Inertia": 1,
-						"Use Fixture Mass": false
+						"Use Fixture Mass": false,
+						"Gravity Scale": 0
 					}
 				},
 				{
@@ -189,6 +191,69 @@
 					"type": "CollisionEdge2D",
 					"id": 16777495,
 					"attributes": {
+						"Trigger": true,
+						"Category Bits": 1,
+						"Mask Bits": 65535
+					}
+				}
+			],
+			"children": []
+		},
+		{
+			"id": 16777254,
+			"attributes": {
+				"Is Enabled": true,
+				"Name": "LeftBound",
+				"Tags": [],
+				"Position": "0 0 0",
+				"Rotation": "1 0 0 0",
+				"Scale": "1 1 1",
+				"Variables": {}
+			},
+			"components": [
+				{
+					"type": "RigidBody2D",
+					"id": 16777508,
+					"attributes": {
+						"Body Type": "Kinematic"
+					}
+				},
+				{
+					"type": "CollisionEdge2D",
+					"id": 16777509,
+					"attributes": {
+						"Trigger": true,
+						"Category Bits": 1,
+						"Mask Bits": 65535
+					}
+				}
+			],
+			"children": []
+		},
+		{
+			"id": 16777255,
+			"attributes": {
+				"Is Enabled": true,
+				"Name": "RightBound",
+				"Tags": [],
+				"Position": "0 0 0",
+				"Rotation": "1 0 0 0",
+				"Scale": "1 1 1",
+				"Variables": {}
+			},
+			"components": [
+				{
+					"type": "RigidBody2D",
+					"id": 16777510,
+					"attributes": {
+						"Body Type": "Kinematic"
+					}
+				},
+				{
+					"type": "CollisionEdge2D",
+					"id": 16777511,
+					"attributes": {
+						"Trigger": true,
 						"Category Bits": 1,
 						"Mask Bits": 65535
 					}

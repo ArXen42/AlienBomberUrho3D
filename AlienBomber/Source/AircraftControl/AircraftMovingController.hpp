@@ -24,6 +24,11 @@ private:
 	void Start() override;
 	void Update(float timeStep) override;
 
-	float velocityMagnitude_ = 3.f;
+	void OnUpperBoundCollision(Node* upperBoundNode);
+	void OnRightBoundCollision(Node* verticalBoundNode);
+	void OnLeftBoundCollision(Node* verticalBoundNode);
+
+	float velocityMagnitude_ = 3.5f;
+	float targetRotation_ = 0;
 	RigidBody2D* rigidBody2D_ = nullptr;
 };
