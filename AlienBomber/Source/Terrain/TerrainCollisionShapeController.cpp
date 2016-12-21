@@ -33,7 +33,6 @@ void TerrainCollisionShapeController::OnHeightmapUpdated(HeightmapUpdateDiff dif
 
 	// Ввиду особенностей реализации компонента коллизий,
 	// для вызова RecreateFixture необходимо обязательно переназначить последнюю точку.
-
 	collisionChain->SetVertex(resolution_ - 1, Vector2(terrainLength_, heightmap->At(heightmapSize - 1)*terrainMaxHeight)
 	                                           - Vector2(terrainLength_/2, terrainMaxHeight/2));
 }
