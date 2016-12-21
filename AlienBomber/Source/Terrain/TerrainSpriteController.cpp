@@ -47,13 +47,18 @@ void TerrainSpriteController::OnHeightmapUpdated(HeightmapUpdateDiff diff) {
 	// Цвет до округленного вниз индекса - color.
 	// Следующий пиксель полупрозрачный, прозрачность определяется величиной округления.
 	for (unsigned int column = 0; column < width; column++) {
-		auto flooredIndex = static_cast<unsigned int>(std::floor((float)column*(heightmapSize - 1)/(width - 1)));
-		auto limit = static_cast<unsigned int>((heightmap->At(flooredIndex)*height));
+		auto flooredIndex = static_cast<unsigned int>(
+				std::floor(static_cast<float>(column)*(heightmapSize - 1)/(width - 1)));
+		auto limit = static_cast<unsigned int>(heightmap->At(flooredIndex)*height);
 
-		for (int row = 0; row <= limit; row++) image.SetPixelInt(column, height - 1 - row, color);
+		for (int row = 0; row <= limit; row++)
+			image.SetPixelInt(column, height - 1 - row, color);
+
 		for (int row = limit + 1; row < height; row++) {
 			float transparency = 1.f/std::pow(row - limit, 1.f);
-			image.SetPixel(column, height - 1 - row, Color(0.1f, 0.4f, 0, transparency));
+			const Color& pixelColor = Color(0.1f, 0.4f, 0, transparency);
+
+			image.SetPixel(column, height - 1 - row, pixelColor);
 		}
 	}
 

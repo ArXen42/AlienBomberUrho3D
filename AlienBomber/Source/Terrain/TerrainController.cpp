@@ -78,6 +78,12 @@ void TerrainController::BlastDeform(unsigned int index, unsigned int radius, flo
 		heightmap_[i] = value > 0 ? value : 0;
 	}
 
-	HeightmapUpdated.Emit({index - radius, index + radius});
+	int left = index - radius;
+	unsigned int right = index + radius;
+
+	unsigned int startIndex = static_cast<unsigned int>(left > 0 ? left : 0);
+	unsigned int endIndex = right < heightmap_.Size() ? right : heightmap_.Size() - 1;
+
+	HeightmapUpdated.Emit({startIndex, endIndex});
 }
 
