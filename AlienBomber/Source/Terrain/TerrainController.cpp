@@ -86,4 +86,3 @@ void TerrainController::BlastDeform(unsigned int index, unsigned int radius, flo
 
 	HeightmapUpdated.Emit({startIndex, endIndex});
 }
-

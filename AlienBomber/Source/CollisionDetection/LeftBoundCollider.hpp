@@ -1,7 +1,8 @@
 #pragma once
 
-#include "StaticColliderComponent.hpp"
 #include <Urho3D/Core/Context.h>
+#include <Urho3D/Scene/Node.h>
+#include "StaticColliderComponent.hpp"
 #include "RightBoundCollider.hpp"
 
 class RightBoundCollider;

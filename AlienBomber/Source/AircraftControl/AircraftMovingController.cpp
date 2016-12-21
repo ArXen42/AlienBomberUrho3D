@@ -6,6 +6,7 @@
 #include "../CollisionDetection/UpperBoundCollider.hpp"
 #include "../CollisionDetection/LeftBoundCollider.hpp"
 #include "../CollisionDetection/CollisionsAggregator.hpp"
+#include "../Helpers/CustomMath.hpp"
 
 void AircraftMovingController::Start() {
 	GetComponent<CollisionsAggregator>()
@@ -30,10 +31,8 @@ void AircraftMovingController::Update(float timeStep) {
 void AircraftMovingController::SetTargetPosition(const Vector2& position) {
 	Vector2 direction = position - GetNode()->GetWorldPosition2D();
 
-	float dirx = direction.x_;
-	float diry = direction.y_;
-	float angle = Acos(dirx/sqrt(dirx*dirx + diry*diry));
-	SetTargetRotation(diry > 0 ? angle : -angle);
+	float angle = CustomMath::GetDirectionAngle(direction);
+	SetTargetRotation(angle);
 }
 
 void AircraftMovingController::SetTargetRotation(float rotation) {

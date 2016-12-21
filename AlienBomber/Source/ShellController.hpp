@@ -22,5 +22,8 @@ public:
 
 private:
 	void Start() override;
+
 	void OnTerrainCollision(Node* terrainNode);
+	void OnRightBoundCollision(Node* verticalBoundNode);
+	void OnLeftBoundCollision(Node* verticalBoundNode);
 };
