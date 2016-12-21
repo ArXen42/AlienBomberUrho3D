@@ -23,6 +23,8 @@ void AircraftBombsController::DropBomb() {
 	bomb->CreateComponent<CollisionsAggregator>();
 	bomb->CreateComponent<ShellController>();
 	bomb->SetPosition2D(GetNode()->GetPosition2D() + Vector2::DOWN*0.6f);
+	bomb->GetComponent<RigidBody2D>()->SetLinearVelocity(
+			GetComponent<RigidBody2D>()->GetLinearVelocity());
 }
 
 void AircraftBombsController::HandleKeyDown(StringHash eventType, VariantMap& eventData) {
