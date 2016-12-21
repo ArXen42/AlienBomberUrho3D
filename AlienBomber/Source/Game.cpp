@@ -101,5 +101,5 @@ void Game::LoadGameLevel() {
 }
 
 void Game::HandlePostRenderUpdate(StringHash eventType, VariantMap& eventData) {
-//	scene_->GetComponent<PhysicsWorld2D>()->DrawDebugGeometry();
+	scene_->GetComponent<PhysicsWorld2D>()->DrawDebugGeometry();
 }

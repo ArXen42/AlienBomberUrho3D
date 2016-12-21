@@ -18,4 +18,5 @@ private:
 	void OnHeightmapUpdated(HeightmapUpdateDiff diff);
 
 	WeakPtr<TerrainController> terrainController_;
+	unsigned int resolution_ = 128;
 };

@@ -28,7 +28,7 @@ void TerrainController::OnSomeShellExploded(ShellController* shell, Node* collid
 	assert(normalizedX >= 0 && normalizedX <= 1);
 
 	unsigned int index = static_cast<unsigned int>((heightmap_.Size() - 1)*normalizedX);
-	BlastDeform(index, 8, 0.015f);
+	BlastDeform(index, 12, 0.015f);
 }
 
 void TerrainController::GenerateHeightmap(float startHeight, float endHeight, float roughness) {
