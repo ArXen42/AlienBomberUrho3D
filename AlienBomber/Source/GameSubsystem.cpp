@@ -4,9 +4,6 @@
 #include "GameSubsystem.hpp"
 #include "CollisionDetection/LeftBoundCollider.hpp"
 #include "CollisionDetection/UpperBoundCollider.hpp"
-#include "AircraftControl/AircraftBombsController.hpp"
-#include "AircraftControl/AircraftMouseController.hpp"
-#include "AircraftControl/AircraftMovingController.hpp"
 #include "CollisionDetection/CollisionsAggregator.hpp"
 #include "Terrain/TerrainSpriteController.hpp"
 #include "CollisionDetection/TerrainCollider.hpp"
@@ -41,9 +38,6 @@ void GameSubsystem::LoadGameLevel() {
 		auto aircraft = scene_->GetChild("Aircraft");
 		aircraft->CreateComponent<CollisionsAggregator>();
 		aircraft->CreateComponent<AircraftController>();
-		aircraft->CreateComponent<AircraftMovingController>();
-		aircraft->CreateComponent<AircraftMouseController>();
-		aircraft->CreateComponent<AircraftBombsController>();
 
 		auto upperBoundNode = scene_->GetChild("UpperBound");
 		upperBoundNode->CreateComponent<UpperBoundCollider>();
