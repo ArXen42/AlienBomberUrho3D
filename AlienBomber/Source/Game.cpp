@@ -1,21 +1,22 @@
 // This is a personal academic project. Dear PVS-Studio, please check it.
 // PVS-Studio Static Code Analyzer for C, C++ and C#: http://www.viva64.com
+#include <Urho3D/Input/Input.h>
+#include <Urho3D/Urho2D/PhysicsWorld2D.h>
 #include "Game.h"
+#include "ShellController.hpp"
+#include "CameraController.hpp"
 #include "AircraftControl/AircraftMovingController.hpp"
 #include "AircraftControl/AircraftMouseController.hpp"
+#include "AircraftControl/AircraftBombsController.hpp"
 #include "Terrain/TerrainController.hpp"
 #include "Terrain/TerrainCollisionShapeController.hpp"
 #include "Terrain/TerrainSpriteController.hpp"
-#include "AircraftControl/AircraftBombsController.hpp"
-#include "CameraController.hpp"
 #include "CollisionDetection/CollisionsAggregator.hpp"
 #include "CollisionDetection/TerrainCollider.hpp"
 #include "CollisionDetection/UpperBoundCollider.hpp"
 #include "CollisionDetection/RightBoundCollider.hpp"
 #include "CollisionDetection/LeftBoundCollider.hpp"
 #include "CollisionDetection/LowerHorizontalBoundCollider.hpp"
-#include <Urho3D/Urho2D/PhysicsWorld2D.h>
-#include <Urho3D/Input/Input.h>
 
 void Game::Setup() {
 	engineParameters_["FullScreen"] = false;
@@ -57,6 +58,7 @@ void Game::LoadGameLevel() {
 		LeftBoundCollider::RegisterObject(context_);
 		LowerHorizontalBoundCollider::RegisterObject(context_);
 
+		ExplosiveController::RegisterObject(context_);
 		ShellController::RegisterObject(context_);
 	}
 

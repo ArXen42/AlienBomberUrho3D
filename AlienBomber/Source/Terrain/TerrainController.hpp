@@ -3,7 +3,7 @@
 #include <Urho3D/Scene/LogicComponent.h>
 #include <Urho3D/Core/Context.h>
 #include "../ThirdParty/Signals/Signal.hpp"
-#include "../ShellController.hpp"
+#include "../ExplosiveController.hpp"
 
 using namespace Urho3D;
 
@@ -39,7 +39,7 @@ private:
 	void Stop() override;
 
 	/// Проверяет, произошло ли столкновение с ландшафтом и деформирует его.
-	void OnSomeShellExploded(ShellController* shell, Node* collidedNode);
+	void OnSomeShellExploded(ExplosiveController* shell, Node* collidedNode);
 
 	void GenerateHeightmap(float startHeight, float endHeight, float roughness);
 	void MidpointDisplacement1D(unsigned int l, unsigned int r, float roughness);

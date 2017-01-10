@@ -1,3 +1,5 @@
+#pragma once
+
 /*
  *  Signal.h
  *  A lightweight signals and slots implementation using fast delegates

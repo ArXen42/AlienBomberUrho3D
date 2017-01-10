@@ -5,22 +5,21 @@
 #include <Urho3D/IO/Log.h>
 #include "TerrainController.hpp"
 
-Gallant::Signal2<ShellController*, Node*> ShellController::SomeShellExploded = {};
 
 const float TerrainController::TERRAIN_LENGTH = 32;
 const float TerrainController::MAX_TERRAIN_HEIGHT = 4;
 
 void TerrainController::DelayedStart() {
-	ShellController::SomeShellExploded.Connect(this, &TerrainController::OnSomeShellExploded);
+	ExplosiveController::SomethingExploded.Connect(this, &TerrainController::OnSomeShellExploded);
 
 	GenerateHeightmap(Random(0.3f, 0.6f), Random(0.3f, 0.6f), 1.5f);
 }
 
 void TerrainController::Stop() {
-	ShellController::SomeShellExploded.Disconnect(this, &TerrainController::OnSomeShellExploded);
+	ExplosiveController::SomethingExploded.Disconnect(this, &TerrainController::OnSomeShellExploded);
 }
 
-void TerrainController::OnSomeShellExploded(ShellController* shell, Node* collidedNode) {
+void TerrainController::OnSomeShellExploded(ExplosiveController* shell, Node* collidedNode) {
 	if (collidedNode != GetNode()) return;
 
 	float deltaX = shell->GetNode()->GetPosition2D().x_ - GetNode()->GetPosition2D().x_;

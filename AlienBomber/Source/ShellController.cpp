@@ -21,13 +21,12 @@ void ShellController::Start() {
 	GetComponent<CollisionsAggregator>()
 			->GetSignal(LeftBoundCollider::GetTypeInfoStatic(), CollisionType::BeginContact)
 			->Connect(this, &ShellController::OnLeftBoundCollision);
+
+	explosiveController_ = GetNode()->CreateComponent<ExplosiveController>();
 }
 
 void ShellController::OnTerrainCollision(Node* terrainNode) {
-	Exploded.Emit(terrainNode);
-	SomeShellExploded.Emit(this, terrainNode);
-
-	GetNode()->Remove();
+	explosiveController_->Explode(terrainNode);
 }
 
 void ShellController::OnRightBoundCollision(Node* verticalBoundNode) {
