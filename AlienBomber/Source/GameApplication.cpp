@@ -2,7 +2,7 @@
 // PVS-Studio Static Code Analyzer for C, C++ and C#: http://www.viva64.com
 #include <Urho3D/Input/Input.h>
 #include <Urho3D/Urho2D/PhysicsWorld2D.h>
-#include "GameApplication.h"
+#include "GameApplication.hpp"
 #include "ShellController.hpp"
 #include "CameraController.hpp"
 #include "AircraftControl/AircraftMovingController.hpp"
@@ -17,7 +17,7 @@
 #include "CollisionDetection/RightBoundCollider.hpp"
 #include "CollisionDetection/LeftBoundCollider.hpp"
 #include "CollisionDetection/LowerHorizontalBoundCollider.hpp"
-#include "GameSubsystem.hpp"
+#include "AircraftControl/AircraftController.hpp"
 
 void GameApplication::Setup() {
 	engineParameters_["FullScreen"] = false;
@@ -33,13 +33,10 @@ void GameApplication::Start() {
 
 	RegisterObjects();
 	context_->RegisterSubsystem(new GameSubsystem(context_));
-
+	gameSubsystem_ = GetSubsystem<GameSubsystem>();
 	GetSubsystem<GameSubsystem>()->LoadGameLevel();
 
 	SubscribeToEvent(E_POSTRENDERUPDATE, URHO3D_HANDLER(GameApplication, HandlePostRenderUpdate));
-}
-
-void GameApplication::Stop() {
 }
 
 void GameApplication::RegisterObjects() {
@@ -52,6 +49,7 @@ void GameApplication::RegisterObjects() {
 	AircraftMovingController::RegisterObject(context_);
 	AircraftMouseController::RegisterObject(context_);
 	AircraftBombsController::RegisterObject(context_);
+	AircraftController::RegisterObject(context_);
 
 	CollisionsAggregator::RegisterObject(context_);
 	TerrainCollider::RegisterObject(context_);
@@ -65,5 +63,6 @@ void GameApplication::RegisterObjects() {
 }
 
 void GameApplication::HandlePostRenderUpdate(StringHash eventType, VariantMap& eventData) {
-	GetSubsystem<GameSubsystem>()->scene_->GetComponent<PhysicsWorld2D>()->DrawDebugGeometry();
+	gameSubsystem_->HandleBeginFrame();
+//	gameSubsystem_->scene_->GetComponent<PhysicsWorld2D>()->DrawDebugGeometry();
 }

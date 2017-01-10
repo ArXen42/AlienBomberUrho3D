@@ -12,6 +12,7 @@
 #include "CollisionDetection/TerrainCollider.hpp"
 #include "Terrain/TerrainCollisionShapeController.hpp"
 #include "CameraController.hpp"
+#include "AircraftControl/AircraftController.hpp"
 
 void GameSubsystem::LoadGameLevel() {
 	{
@@ -19,7 +20,7 @@ void GameSubsystem::LoadGameLevel() {
 		auto resourceCache = GetSubsystem<ResourceCache>();
 		auto jsonSceneFile = resourceCache->GetFile("Data/Scenes/Game.json");
 		scene_ = new Scene(context_);
-		scene_.Get()->LoadJSON(*jsonSceneFile);
+		scene_->LoadJSON(*jsonSceneFile);
 	}
 
 	{
@@ -39,6 +40,7 @@ void GameSubsystem::LoadGameLevel() {
 
 		auto aircraft = scene_->GetChild("Aircraft");
 		aircraft->CreateComponent<CollisionsAggregator>();
+		aircraft->CreateComponent<AircraftController>();
 		aircraft->CreateComponent<AircraftMovingController>();
 		aircraft->CreateComponent<AircraftMouseController>();
 		aircraft->CreateComponent<AircraftBombsController>();
@@ -53,6 +55,28 @@ void GameSubsystem::LoadGameLevel() {
 		leftBoundNode->CreateComponent<LeftBoundCollider>();
 	}
 }
+
 void GameSubsystem::UnloadGameLevel() {
+	assert(!scene_.Expired());
+
+	scene_->RemoveAllChildren();
+	scene_->RemoveAllComponents();
+	scene_->RemoveAllTags();
 	scene_->Remove();
+}
+
+void GameSubsystem::RequestReloadGameLevel() {
+	reloadRequested_ = true;
+}
+
+void GameSubsystem::HandleBeginFrame() {
+	if (reloadRequested_) {
+		ReloadGameLevel();
+		reloadRequested_ = false;
+	}
+}
+
+void GameSubsystem::ReloadGameLevel() {
+	UnloadGameLevel();
+	LoadGameLevel();
 }

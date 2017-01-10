@@ -5,6 +5,7 @@
 #include <Urho3D/Scene/Scene.h>
 #include <Urho3D/Graphics/Camera.h>
 #include <Urho3D/Graphics/Renderer.h>
+#include "GameSubsystem.hpp"
 
 using namespace Urho3D;
 
@@ -16,13 +17,13 @@ public:
 
 	virtual void Start();
 
-	virtual void Stop();
-
 	void HandlePostRenderUpdate(StringHash eventType, VariantMap& eventData);
 
 private:
 	/// Регистрация компонентов
 	void RegisterObjects();
+
+	GameSubsystem* gameSubsystem_ = nullptr;
 };
 
 URHO3D_DEFINE_APPLICATION_MAIN(GameApplication)

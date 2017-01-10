@@ -14,15 +14,19 @@ public:
 	/// Загружает пока игровой уровень из json и инициализирует компоненты.
 	void LoadGameLevel();
 
-	/// Перезагружает игровой уровень.
-	void ReloadGameLevel() {
-		UnloadGameLevel();
-		LoadGameLevel();
-	}
-
-	WeakPtr<Scene> scene_;
-private:
-
 	/// Выгружает загруженный уровень
 	void UnloadGameLevel();
+
+	/// В результате вызова игровой уровень будет перезагружен в начале следующего кадра.
+	void RequestReloadGameLevel();
+
+	/// Служебный метод, вызываемый из GameApplication (производит фактическую перезагрузку уровня).
+	void HandleBeginFrame();
+
+	WeakPtr<Scene> scene_;
+
+private:
+	void ReloadGameLevel();
+
+	bool reloadRequested_ = false;
 };
