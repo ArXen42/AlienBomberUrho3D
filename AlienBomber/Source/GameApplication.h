@@ -8,11 +8,9 @@
 
 using namespace Urho3D;
 
-class Game : public Application {
+class GameApplication : public Application {
 public:
-	SharedPtr<Scene> scene_;
-
-	Game(Context* context) : Application(context) {}
+	GameApplication(Context* context) : Application(context) {}
 
 	virtual void Setup();
 
@@ -23,8 +21,8 @@ public:
 	void HandlePostRenderUpdate(StringHash eventType, VariantMap& eventData);
 
 private:
-	/// Загружает пока единственный уровень игры из json и инициализирует компоненты.
-	void LoadGameLevel();
+	/// Регистрация компонентов
+	void RegisterObjects();
 };
 
-URHO3D_DEFINE_APPLICATION_MAIN(Game)
+URHO3D_DEFINE_APPLICATION_MAIN(GameApplication)
