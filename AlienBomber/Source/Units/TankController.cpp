@@ -6,6 +6,10 @@ void TankController::Start() {
 	ExplosiveController::SomethingExploded.Connect(this, &TankController::OnSomethingExploded);
 }
 
+void TankController::Stop() {
+	ExplosiveController::SomethingExploded.Disconnect(this, &TankController::OnSomethingExploded);
+}
+
 void TankController::OnSomethingExploded(ExplosiveController* shell, Node* collidedNode) {
 	auto delta = shell->GetNode()->GetPosition2D() - GetNode()->GetPosition2D();
 

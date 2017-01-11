@@ -7,6 +7,7 @@
 
 void TankSpawner::Start() {
 	InstantiateTank(0.2f);
+	InstantiateTank(0.7f);
 }
 void TankSpawner::InstantiateTank(float normalizedPos) {
 	auto resourceCache = GetSubsystem<ResourceCache>();

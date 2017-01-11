@@ -1,4 +1,4 @@
-#pragma once
+#pragma onc       e
 
 #include <Urho3D/Core/Context.h>
 #include <Urho3D/Scene/LogicComponent.h>
@@ -16,5 +16,6 @@ public:
 
 private:
 	void Start() override;
+	void Stop() override;
 	void OnSomethingExploded(ExplosiveController* shell, Node* collidedNode);
 };
