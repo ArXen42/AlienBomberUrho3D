@@ -22,6 +22,22 @@ public:
 	/// Оповещает о столкновении и взрыве снаряда.
 	Gallant::Signal2<ExplosiveController*, Node*> Exploded;
 
-	/// Вызывает события взрыва и удаляет ноду, к которой прикреплен этот компонент
+	/// Вызывает события взрыва и удаляет ноду, к которой прикреплен этот компонент.
 	void Explode(Node* node) { Exploded.Emit(this, node), SomethingExploded.Emit(this, node), GetNode()->Remove(); }
+
+	/// Возвращает силу взрыва.
+	float GetExplosionPower() { return explosionPower_; }
+
+	/// Возвращает радиус взрыва.
+	float GetExplosionRange() { return explosionRange_; }
+
+	/// Устанавливает силу взрыва.
+	void SetExplosionPower(float value) { explosionPower_ = value; }
+
+	/// Устанавливает радиус взрыва.
+	void SetExplosionRange(float value) { explosionRange_ = value; }
+
+private:
+	float explosionPower_ = 15.f;
+	float explosionRange_ = 1.f;
 };

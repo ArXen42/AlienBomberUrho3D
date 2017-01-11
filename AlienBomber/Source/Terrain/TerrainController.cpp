@@ -10,16 +10,16 @@ const float TerrainController::TERRAIN_LENGTH = 32;
 const float TerrainController::MAX_TERRAIN_HEIGHT = 4;
 
 void TerrainController::DelayedStart() {
-	ExplosiveController::SomethingExploded.Connect(this, &TerrainController::OnSomeShellExploded);
+	ExplosiveController::SomethingExploded.Connect(this, &TerrainController::OnSomethingExploded);
 
 	GenerateHeightmap(Random(0.3f, 0.6f), Random(0.3f, 0.6f), 1.5f);
 }
 
 void TerrainController::Stop() {
-	ExplosiveController::SomethingExploded.Disconnect(this, &TerrainController::OnSomeShellExploded);
+	ExplosiveController::SomethingExploded.Disconnect(this, &TerrainController::OnSomethingExploded);
 }
 
-void TerrainController::OnSomeShellExploded(ExplosiveController* shell, Node* collidedNode) {
+void TerrainController::OnSomethingExploded(ExplosiveController* shell, Node* collidedNode) {
 	if (collidedNode != GetNode()) return;
 
 	float deltaX = shell->GetNode()->GetPosition2D().x_ - GetNode()->GetPosition2D().x_;
@@ -27,7 +27,7 @@ void TerrainController::OnSomeShellExploded(ExplosiveController* shell, Node* co
 	assert(normalizedX >= 0 && normalizedX <= 1);
 
 	unsigned int index = static_cast<unsigned int>((heightmap_.Size() - 1)*normalizedX);
-	BlastDeform(index, 12, 0.015f);
+	BlastDeform(index, 12, 0.001f*shell->GetExplosionPower());
 }
 
 void TerrainController::GenerateHeightmap(float startHeight, float endHeight, float roughness) {
@@ -66,6 +66,7 @@ bool TerrainController::IsHeightmapValid() {
 	return true;
 }
 
+//TODO: улучшить алгоритм взрыва
 void TerrainController::BlastDeform(unsigned int index, unsigned int radius, float depth) {
 	for (int i = index - radius; i <= index + radius; i++) {
 		if (i < 0 || i > heightmap_.Size() - 1) continue;
