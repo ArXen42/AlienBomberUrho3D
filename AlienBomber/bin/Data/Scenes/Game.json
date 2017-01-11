@@ -8,8 +8,8 @@
 		"Elapsed Time": 3.15888,
 		"Next Replicated Node ID": 3,
 		"Next Replicated Component ID": 7,
-		"Next Local Node ID": 16777256,
-		"Next Local Component ID": 16777512,
+		"Next Local Node ID": 16777260,
+		"Next Local Component ID": 16777539,
 		"Variables": {},
 		"Variable Names": ""
 	},
@@ -256,6 +256,29 @@
 						"Trigger": true,
 						"Category Bits": 1,
 						"Mask Bits": 65535
+					}
+				}
+			],
+			"children": []
+		},
+		{
+			"id": 16777259,
+			"attributes": {
+				"Is Enabled": true,
+				"Name": "Sky",
+				"Tags": [],
+				"Position": "0 0 10",
+				"Rotation": "1 0 0 0",
+				"Scale": "1 1 1",
+				"Variables": {}
+			},
+			"components": [
+				{
+					"type": "StaticSprite2D",
+					"id": 16777538,
+					"attributes": {
+						"Order in Layer": -1,
+						"Sprite": "Sprite2D;Sprites/Sky.png"
 					}
 				}
 			],

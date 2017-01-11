@@ -19,6 +19,7 @@
 #include "CollisionDetection/LowerHorizontalBoundCollider.hpp"
 #include "AircraftControl/AircraftController.hpp"
 #include "Units/LandUnitMovingController.hpp"
+#include "SkySpriteController.hpp"
 
 void GameApplication::Setup() {
 	engineParameters_["FullScreen"] = false;
@@ -46,6 +47,7 @@ void GameApplication::RegisterObjects() {
 	TerrainSpriteController::RegisterObject(context_);
 
 	CameraController::RegisterObject(context_);
+	SkySpriteController::RegisterObject(context_);
 
 	AircraftMovingController::RegisterObject(context_);
 	AircraftMouseController::RegisterObject(context_);
@@ -67,5 +69,5 @@ void GameApplication::RegisterObjects() {
 
 void GameApplication::HandlePostRenderUpdate(StringHash eventType, VariantMap& eventData) {
 	gameSubsystem_->HandleBeginFrame();
-	gameSubsystem_->scene_->GetComponent<PhysicsWorld2D>()->DrawDebugGeometry();
+//	gameSubsystem_->scene_->GetComponent<PhysicsWorld2D>()->DrawDebugGeometry();
 }

@@ -10,7 +10,7 @@
 #include "Terrain/TerrainCollisionShapeController.hpp"
 #include "CameraController.hpp"
 #include "AircraftControl/AircraftController.hpp"
-#include "Units/LandUnitMovingController.hpp"
+#include "SkySpriteController.hpp"
 
 void GameSubsystem::LoadGameLevel() {
 	{
@@ -28,6 +28,8 @@ void GameSubsystem::LoadGameLevel() {
 	}
 
 	{
+		scene_->GetChild("Sky")->CreateComponent<SkySpriteController>();
+
 		// Инициализация своих компонентов на сцене
 		// (к сожалению, Urho3D не может их задавать в редакторе, в отличие от AngelScript скриптов)
 		auto terrainNode = scene_->GetChild("Terrain");
@@ -48,8 +50,6 @@ void GameSubsystem::LoadGameLevel() {
 
 		auto leftBoundNode = scene_->GetChild("LeftBound");
 		leftBoundNode->CreateComponent<LeftBoundCollider>();
-
-		scene_->GetChild("LandUnit")->CreateComponent<LandUnitMovingController>();
 	}
 }
 
