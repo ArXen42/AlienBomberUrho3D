@@ -37,5 +37,5 @@ void LandUnitMovingController::OnLeftBoundCollision(Node* verticalBoundNode) {
 
 void LandUnitMovingController::SetMovingDirection(LandUnitMovingController::MovingDirection value) {
 	movingDirection_ = value;
-	GetComponent<StaticSprite2D>()->SetFlipX(value == MovingDirection::Right);
+	GetComponent<StaticSprite2D>()->SetFlipX(value == MovingDirection::Left);
 }
