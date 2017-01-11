@@ -12,13 +12,20 @@ URHO3D_OBJECT(LandUnitMovingController, LogicComponent);
 public:
 	static void RegisterObject(Context* context) { context->RegisterFactory<LandUnitMovingController>(); }
 
-public:
-	LandUnitMovingController(Context* context) : LogicComponent(context) {}
-
-private:
 	enum class MovingDirection {
 		Left, Right
 	};
+
+public:
+	LandUnitMovingController(Context* context) : LogicComponent(context) {}
+
+	/// Возвращает текущее направление движения.
+	MovingDirection GetMovingDirection() { return movingDirection_; }
+
+	/// Устанавливает направление движения.
+	void SetMovingDirection(MovingDirection value);
+
+private:
 
 	void Update(float timeStep) override;
 	void DelayedStart() override;
@@ -27,5 +34,5 @@ private:
 	void OnLeftBoundCollision(Node* verticalBoundNode);
 
 	float speed_ = 3.f;
-	MovingDirection movingDirection_ = MovingDirection::Left;
+	MovingDirection movingDirection_ = MovingDirection::Right;
 };

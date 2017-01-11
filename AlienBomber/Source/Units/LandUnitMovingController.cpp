@@ -3,6 +3,7 @@
 
 #include <Urho3D/Scene/Scene.h>
 #include <Urho3D/Urho2D/RigidBody2D.h>
+#include <Urho3D/Urho2D/StaticSprite2D.h>
 #include "LandUnitMovingController.hpp"
 #include "../CollisionDetection/CollisionsAggregator.hpp"
 #include "../CollisionDetection/RightBoundCollider.hpp"
@@ -27,9 +28,14 @@ void LandUnitMovingController::DelayedStart() {
 }
 
 void LandUnitMovingController::OnRightBoundCollision(Node* verticalBoundNode) {
-	movingDirection_ = MovingDirection::Left;
+	SetMovingDirection(MovingDirection::Left);
 }
 
 void LandUnitMovingController::OnLeftBoundCollision(Node* verticalBoundNode) {
-	movingDirection_ = MovingDirection::Right;
+	SetMovingDirection(MovingDirection::Right);
+}
+
+void LandUnitMovingController::SetMovingDirection(LandUnitMovingController::MovingDirection value) {
+	movingDirection_ = value;
+	GetComponent<StaticSprite2D>()->SetFlipX(value == MovingDirection::Right);
 }

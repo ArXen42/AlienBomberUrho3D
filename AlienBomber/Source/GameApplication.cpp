@@ -20,6 +20,8 @@
 #include "AircraftControl/AircraftController.hpp"
 #include "Units/LandUnitMovingController.hpp"
 #include "SkySpriteController.hpp"
+#include "Units/TankController.hpp"
+#include "Units/TankSpawner.hpp"
 
 void GameApplication::Setup() {
 	engineParameters_["FullScreen"] = false;
@@ -55,6 +57,8 @@ void GameApplication::RegisterObjects() {
 	AircraftController::RegisterObject(context_);
 
 	LandUnitMovingController::RegisterObject(context_);
+	TankController::RegisterObject(context_);
+	TankSpawner::RegisterObject(context_);
 
 	CollisionsAggregator::RegisterObject(context_);
 	TerrainCollider::RegisterObject(context_);

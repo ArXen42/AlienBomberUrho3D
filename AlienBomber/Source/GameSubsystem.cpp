@@ -11,6 +11,7 @@
 #include "CameraController.hpp"
 #include "AircraftControl/AircraftController.hpp"
 #include "SkySpriteController.hpp"
+#include "Units/TankSpawner.hpp"
 
 void GameSubsystem::LoadGameLevel() {
 	{
@@ -50,6 +51,8 @@ void GameSubsystem::LoadGameLevel() {
 
 		auto leftBoundNode = scene_->GetChild("LeftBound");
 		leftBoundNode->CreateComponent<LeftBoundCollider>();
+
+		scene_->CreateComponent<TankSpawner>();
 	}
 }
 
