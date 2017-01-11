@@ -10,6 +10,7 @@
 #include "Terrain/TerrainCollisionShapeController.hpp"
 #include "CameraController.hpp"
 #include "AircraftControl/AircraftController.hpp"
+#include "Units/LandUnitMovingController.hpp"
 
 void GameSubsystem::LoadGameLevel() {
 	{
@@ -47,6 +48,8 @@ void GameSubsystem::LoadGameLevel() {
 
 		auto leftBoundNode = scene_->GetChild("LeftBound");
 		leftBoundNode->CreateComponent<LeftBoundCollider>();
+
+		scene_->GetChild("LandUnit")->CreateComponent<LandUnitMovingController>();
 	}
 }
 

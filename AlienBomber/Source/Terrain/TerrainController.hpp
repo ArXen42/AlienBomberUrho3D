@@ -31,6 +31,9 @@ public:
 
 	const Vector<float>* GetHeightmap() const { return &heightmap_; }
 
+	/// Возвращает координаты на карте высот из нормализованной горизонтальной координаты.
+	Vector2 GetPositionFromNormalized(float normalizedX);
+
 	Gallant::Signal1<HeightmapUpdateDiff> HeightmapUpdated;
 
 private:
