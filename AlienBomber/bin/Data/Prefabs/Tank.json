@@ -1,0 +1,43 @@
+{
+  "id": 16777261,
+  "attributes": {
+    "Is Enabled": true,
+    "Name": "Tank",
+    "Tags": [],
+    "Position": "0 0 0",
+    "Rotation": "1 0 0 0",
+    "Scale": "0.35 0.25 0.35",
+    "Variables": {}
+  },
+  "components": [
+    {
+      "type": "StaticSprite2D",
+      "id": 16777551,
+      "attributes": {
+        "Sprite": "Sprite2D;Sprites/Tank.png"
+      }
+    },
+    {
+      "type": "RigidBody2D",
+      "id": 16777552,
+      "attributes": {
+        "Body Type": "Dynamic",
+        "Mass": 1,
+        "Inertia": 0.001,
+        "Use Fixture Mass": false,
+        "Gravity Scale": 3
+      }
+    },
+    {
+      "type": "CollisionBox2D",
+      "id": 16777553,
+      "attributes": {
+        "Size": "1.5 0.3",
+        "Center": "0 -0.65",
+        "Category Bits": 1,
+        "Mask Bits": 65535
+      }
+    }
+  ],
+  "children": []
+}
