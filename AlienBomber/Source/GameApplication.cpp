@@ -72,6 +72,5 @@ void GameApplication::RegisterObjects() {
 }
 
 void GameApplication::HandlePostRenderUpdate(StringHash eventType, VariantMap& eventData) {
-	gameSubsystem_->HandleBeginFrame();
 //	gameSubsystem_->scene_->GetComponent<PhysicsWorld2D>()->DrawDebugGeometry();
 }

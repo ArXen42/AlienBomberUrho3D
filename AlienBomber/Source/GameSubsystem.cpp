@@ -69,7 +69,7 @@ void GameSubsystem::RequestReloadGameLevel() {
 	reloadRequested_ = true;
 }
 
-void GameSubsystem::HandleBeginFrame() {
+void GameSubsystem::HandleBeginFrame(StringHash eventType, VariantMap& eventData) {
 	if (reloadRequested_) {
 		ReloadGameLevel();
 		reloadRequested_ = false;
