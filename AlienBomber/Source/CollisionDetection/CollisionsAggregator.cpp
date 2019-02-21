@@ -36,11 +36,16 @@ void CollisionsAggregator::OnContact(CollisionType type, VariantMap& eventData)
 	auto nodeA = dynamic_cast<Node*>(eventData[PhysicsBeginContact2D::P_NODEA].GetPtr());
 	auto nodeB = dynamic_cast<Node*>(eventData[PhysicsBeginContact2D::P_NODEB].GetPtr());
 
-	if (nodeA != node_ && nodeB != node_) return;
+	if (nodeA != node_ && nodeB != node_)
+		return;
 
-	auto collidedNode            = nodeB == node_ ? nodeA : nodeB;
+	auto collidedNode = nodeB == node_ ? nodeA : nodeB;
+	if (collidedNode == nullptr)
+		return;
+
 	auto staticColliderComponent = collidedNode->GetDerivedComponent<StaticColliderComponent>();
-	if (staticColliderComponent == nullptr) return;
+	if (staticColliderComponent == nullptr)
+		return;
 
 	auto& signalsHashMap = type == CollisionType::BeginContact
 	                       ? collisionBeginContactSignals_
