@@ -1,3 +1,4 @@
 /AlienBomber/cmake-build*
 /AlienBomber/.idea/*
 !/AlienBomber/.idea/codeStyles
+workspace.xml

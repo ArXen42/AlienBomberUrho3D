@@ -1,0 +1,65 @@
+\documentclass[12pt, a4paper]{article}
+
+\usepackage{xltxtra} % XeLaTex
+
+\setromanfont{Liberation Sans} %Fonts setup
+\setsansfont{Liberation Sans}
+\setmonofont{DejaVu Sans Mono}
+
+\usepackage{geometry}
+\geometry{verbose,a4paper,tmargin=2cm,bmargin=2cm,lmargin=3.5cm,rmargin=1cm}
+
+\usepackage{polyglossia} %Languages
+\setmainlanguage{russian}
+\setotherlanguage{english}
+
+\PolyglossiaSetup{russian}{indentfirst=true} %Indentation
+\parindent = 1cm
+
+\usepackage{setspace}
+\onehalfspacing
+\hyphenpenalty=10000
+\tolerance=1
+\emergencystretch=1000
+
+\usepackage{titlesec} %Настройка заголовков
+\newcommand{\sectionbreak}{\clearpage}
+\newcommand{\anonsection}[1]{\section*{#1}\addcontentsline{toc}{section}{#1}}
+\newcommand{\anonsubsection}[1]{\subsection*{#1}\addcontentsline{toc}{subsection}{#1}}
+
+\usepackage{enumitem} %Itemize customization
+
+\usepackage[figurename=Схема]{newfloat} %Floating environments
+\usepackage{graphicx} %Images
+\usepackage{pdfpages}
+\DeclareGraphicsExtensions{.pdf,.png}
+\graphicspath{{images/pdf/}{images/png/}}
+
+\usepackage[outputdir=\detokenize{../out/}, newfloat=true]{minted}
+\setminted[sql]{
+linenos=true,
+breaklines=true,
+encoding=utf8,
+frame=single,
+tabsize = 3
+}
+\makeatletter
+\AtBeginEnvironment{minted}{\dontdofcolorbox}
+\newcommand{\dontdofcolorbox{\renewcommand\fcolorbox[4][]{##4}}}{\xpatchcmd{\inputminted}{\minted@fvset}{\minted@fvset\dontdofcolorbox}{}{}}
+\makeatother %Fix red box around cyrillic symbols in listings
+
+\SetupFloatingEnvironment{listing}{name=Листинг}
+\addto\captionsrussian{\renewcommand{\contentsname}{Оглавление}}
+
+\usepackage[doi=false, url=false, sorting=ynt]{biblatex}
+\addbibresource{sources.bib}
+
+\begin{document}
+
+	\includepdf{title-page}
+
+	\tableofcontents
+
+	\printbibliography[title = Список использованных источников]
+
+\end{document}
