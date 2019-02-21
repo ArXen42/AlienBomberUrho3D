@@ -7,28 +7,36 @@
 using namespace Urho3D;
 
 /// Контроллирует перемещение самолета и предоставляет интерфейс для управления полетом.
-class AircraftMovingController : public LogicComponent {
+class AircraftMovingController : public LogicComponent
+{
 URHO3D_OBJECT(AircraftMovingController, LogicComponent);
 public:
-	static void RegisterObject(Context* context) { context->RegisterFactory<AircraftMovingController>(); }
+	static void RegisterObject(Context* context)
+	{ context->RegisterFactory<AircraftMovingController>(); }
 
 public:
-	AircraftMovingController(Context* context) : LogicComponent(context) {}
+	AircraftMovingController(Context* context) : LogicComponent(context)
+	{}
 
 	void SetTargetPosition(const Vector2& position);
+
 	void SetTargetRotation(float rotation);
 
-	Vector2 GetLinearVelocity() { return rigidBody2D_->GetLinearVelocity(); }
+	Vector2 GetLinearVelocity()
+	{ return rigidBody2D_->GetLinearVelocity(); }
 
 private:
 	void Start() override;
+
 	void Update(float timeStep) override;
 
 	void OnUpperBoundCollision(Node* upperBoundNode);
+
 	void OnRightBoundCollision(Node* verticalBoundNode);
+
 	void OnLeftBoundCollision(Node* verticalBoundNode);
 
 	float velocityMagnitude_ = 3.5f;
-	float targetRotation_ = 0;
+	float targetRotation_    = 0;
 	RigidBody2D* rigidBody2D_ = nullptr;
 };

@@ -1,2 +1,3 @@
 /AlienBomber/cmake-build*
-/AlienBomber/.idea/
+/AlienBomber/.idea/*
+!/AlienBomber/.idea/codeStyles

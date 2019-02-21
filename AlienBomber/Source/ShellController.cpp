@@ -9,7 +9,8 @@
 #include <Urho3D/Scene/Scene.h>
 #include <Urho3D/Urho2D/RigidBody2D.h>
 
-void ShellController::Start() {
+void ShellController::Start()
+{
 	GetComponent<CollisionsAggregator>()
 			->GetSignal(TerrainCollider::GetTypeInfoStatic())
 			->Connect(this, &ShellController::OnTerrainCollision);
@@ -25,13 +26,15 @@ void ShellController::Start() {
 	explosiveController_ = GetNode()->CreateComponent<ExplosiveController>();
 }
 
-void ShellController::OnTerrainCollision(Node* terrainNode) {
+void ShellController::OnTerrainCollision(Node* terrainNode)
+{
 	explosiveController_->Explode(terrainNode);
 }
 
-void ShellController::OnRightBoundCollision(Node* verticalBoundNode) {
+void ShellController::OnRightBoundCollision(Node* verticalBoundNode)
+{
 	auto direction = GetComponent<RigidBody2D>()->GetLinearVelocity();
-	auto angle = CustomMath::GetDirectionAngle(direction);
+	auto angle     = CustomMath::GetDirectionAngle(direction);
 	if (angle > 90 || angle < -90) return;
 
 	auto position = GetNode()->GetPosition2D();
@@ -39,9 +42,10 @@ void ShellController::OnRightBoundCollision(Node* verticalBoundNode) {
 			verticalBoundNode->GetComponent<RightBoundCollider>()->GetOppositePosition(position));
 }
 
-void ShellController::OnLeftBoundCollision(Node* verticalBoundNode) {
+void ShellController::OnLeftBoundCollision(Node* verticalBoundNode)
+{
 	auto direction = GetComponent<RigidBody2D>()->GetLinearVelocity();
-	auto angle = CustomMath::GetDirectionAngle(direction);
+	auto angle     = CustomMath::GetDirectionAngle(direction);
 	if (-90 < angle && angle < 90) return;
 
 	auto position = GetNode()->GetPosition2D();

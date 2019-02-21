@@ -1,39 +1,39 @@
 {
-	"id": 16777217,
-	"attributes": {
-		"Is Enabled": true,
-		"Name": "Bomb",
-		"Tags": [],
-		"Position": "0 0 0",
-		"Rotation": "1 0 0 0",
-		"Scale": "1 1 1",
-		"Variables": {}
-	},
-	"components": [
-		{
-			"type": "RigidBody2D",
-			"id": 16777228,
-			"attributes": {
-				"Body Type": "Dynamic",
-				"Mass": 1
-			}
-		},
-		{
-			"type": "CollisionBox2D",
-			"id": 16777229,
-			"attributes": {
-				"Size": "0.2 0.3",
-				"Category Bits": 1,
-				"Mask Bits": 65535
-			}
-		},
-		{
-			"type": "StaticSprite2D",
-			"id": 16777230,
-			"attributes": {
-				"Sprite": "Sprite2D;Data/Sprites/Bomb.png"
-			}
-		}
-	],
-	"children": []
+  "id": 16777217,
+  "attributes": {
+    "Is Enabled": true,
+    "Name": "Bomb",
+    "Tags": [],
+    "Position": "0 0 0",
+    "Rotation": "1 0 0 0",
+    "Scale": "1 1 1",
+    "Variables": {}
+  },
+  "components": [
+    {
+      "type": "RigidBody2D",
+      "id": 16777228,
+      "attributes": {
+        "Body Type": "Dynamic",
+        "Mass": 1
+      }
+    },
+    {
+      "type": "CollisionBox2D",
+      "id": 16777229,
+      "attributes": {
+        "Size": "0.2 0.3",
+        "Category Bits": 1,
+        "Mask Bits": 65535
+      }
+    },
+    {
+      "type": "StaticSprite2D",
+      "id": 16777230,
+      "attributes": {
+        "Sprite": "Sprite2D;Data/Sprites/Bomb.png"
+      }
+    }
+  ],
+  "children": []
 }

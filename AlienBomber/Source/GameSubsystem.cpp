@@ -13,7 +13,8 @@
 #include "SkySpriteController.hpp"
 #include "Units/TankSpawner.hpp"
 
-void GameSubsystem::LoadGameLevel() {
+void GameSubsystem::LoadGameLevel()
+{
 	{
 		// Загрузка базовой конфигурации сцены из файла
 		auto resourceCache = GetSubsystem<ResourceCache>();
@@ -56,7 +57,8 @@ void GameSubsystem::LoadGameLevel() {
 	}
 }
 
-void GameSubsystem::UnloadGameLevel() {
+void GameSubsystem::UnloadGameLevel()
+{
 	assert(!scene_.Expired());
 
 	scene_->RemoveAllChildren();
@@ -65,18 +67,22 @@ void GameSubsystem::UnloadGameLevel() {
 	scene_->Remove();
 }
 
-void GameSubsystem::RequestReloadGameLevel() {
+void GameSubsystem::RequestReloadGameLevel()
+{
 	reloadRequested_ = true;
 }
 
-void GameSubsystem::HandleBeginFrame(StringHash eventType, VariantMap& eventData) {
-	if (reloadRequested_) {
+void GameSubsystem::HandleBeginFrame(StringHash eventType, VariantMap& eventData)
+{
+	if (reloadRequested_)
+	{
 		ReloadGameLevel();
 		reloadRequested_ = false;
 	}
 }
 
-void GameSubsystem::ReloadGameLevel() {
+void GameSubsystem::ReloadGameLevel()
+{
 	UnloadGameLevel();
 	LoadGameLevel();
 }

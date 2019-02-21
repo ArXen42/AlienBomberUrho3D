@@ -5,13 +5,17 @@
 
 using namespace Urho3D;
 
-class SkySpriteController : public LogicComponent {
+class SkySpriteController : public LogicComponent
+{
 URHO3D_OBJECT(SkySpriteController, LogicComponent)
-public:
-	static void RegisterObject(Context* context) { context->RegisterFactory<SkySpriteController>(); }
 
 public:
-	SkySpriteController(Context* context) : LogicComponent(context) {};
+	static void RegisterObject(Context* context)
+	{ context->RegisterFactory<SkySpriteController>(); }
+
+public:
+	SkySpriteController(Context* context) : LogicComponent(context)
+	{};
 
 private:
 public:

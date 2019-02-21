@@ -23,15 +23,17 @@
 #include "Units/TankController.hpp"
 #include "Units/TankSpawner.hpp"
 
-void GameApplication::Setup() {
-	engineParameters_["FullScreen"] = false;
-	engineParameters_["WindowWidth"] = 1280;
-	engineParameters_["WindowHeight"] = 720;
+void GameApplication::Setup()
+{
+	engineParameters_["FullScreen"]      = false;
+	engineParameters_["WindowWidth"]     = 1280;
+	engineParameters_["WindowHeight"]    = 720;
 	engineParameters_["WindowResizable"] = false;
 
 }
 
-void GameApplication::Start() {
+void GameApplication::Start()
+{
 	GetSubsystem<Input>()->SetMouseVisible(true);
 	GetSubsystem<Input>()->SetMouseGrabbed(false);
 
@@ -43,7 +45,8 @@ void GameApplication::Start() {
 	SubscribeToEvent(E_POSTRENDERUPDATE, URHO3D_HANDLER(GameApplication, HandlePostRenderUpdate));
 }
 
-void GameApplication::RegisterObjects() {
+void GameApplication::RegisterObjects()
+{
 	TerrainController::RegisterObject(context_);
 	TerrainCollisionShapeController::RegisterObject(context_);
 	TerrainSpriteController::RegisterObject(context_);
@@ -71,6 +74,7 @@ void GameApplication::RegisterObjects() {
 	ShellController::RegisterObject(context_);
 }
 
-void GameApplication::HandlePostRenderUpdate(StringHash eventType, VariantMap& eventData) {
+void GameApplication::HandlePostRenderUpdate(StringHash eventType, VariantMap& eventData)
+{
 //	gameSubsystem_->scene_->GetComponent<PhysicsWorld2D>()->DrawDebugGeometry();
 }

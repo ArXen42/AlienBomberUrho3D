@@ -8,7 +8,8 @@
 #include "../CollisionDetection/CollisionsAggregator.hpp"
 #include "../Helpers/CustomMath.hpp"
 
-void AircraftMovingController::Start() {
+void AircraftMovingController::Start()
+{
 	GetComponent<CollisionsAggregator>()
 			->GetSignal(UpperBoundCollider::GetTypeInfoStatic())
 			->Connect(this, &AircraftMovingController::OnUpperBoundCollision);
@@ -25,25 +26,29 @@ void AircraftMovingController::Start() {
 	SetTargetRotation(0);
 }
 
-void AircraftMovingController::Update(float timeStep) {
+void AircraftMovingController::Update(float timeStep)
+{
 }
 
-void AircraftMovingController::SetTargetPosition(const Vector2& position) {
+void AircraftMovingController::SetTargetPosition(const Vector2& position)
+{
 	Vector2 direction = position - GetNode()->GetWorldPosition2D();
 
 	float angle = CustomMath::GetDirectionAngle(direction);
 	SetTargetRotation(angle);
 }
 
-void AircraftMovingController::SetTargetRotation(float rotation) {
+void AircraftMovingController::SetTargetRotation(float rotation)
+{
 	targetRotation_ = rotation;
 	GetNode()->SetRotation2D(rotation);
-	rigidBody2D_->SetLinearVelocity(Vector2(Cos(rotation), Sin(rotation))*velocityMagnitude_);
+	rigidBody2D_->SetLinearVelocity(Vector2(Cos(rotation), Sin(rotation)) * velocityMagnitude_);
 
 	GetComponent<StaticSprite2D>()->SetFlipY(Abs(rotation) > 90); //TODO: перенести
 }
 
-void AircraftMovingController::OnUpperBoundCollision(Node* upperBoundNode) {
+void AircraftMovingController::OnUpperBoundCollision(Node* upperBoundNode)
+{
 	float rotation = upperBoundNode->GetComponent<UpperBoundCollider>()->ReflectDirectionAngle(targetRotation_);
 	if (rotation > 0)
 		rotation = -rotation; //Препятствует выходу за пределы экрана в пограничных случаях
@@ -51,7 +56,8 @@ void AircraftMovingController::OnUpperBoundCollision(Node* upperBoundNode) {
 	SetTargetRotation(rotation);
 }
 
-void AircraftMovingController::OnRightBoundCollision(Node* verticalBoundNode) {
+void AircraftMovingController::OnRightBoundCollision(Node* verticalBoundNode)
+{
 	if (targetRotation_ > 90 || targetRotation_ < -90) return;
 
 	auto position = GetNode()->GetPosition2D();
@@ -59,7 +65,8 @@ void AircraftMovingController::OnRightBoundCollision(Node* verticalBoundNode) {
 			verticalBoundNode->GetComponent<RightBoundCollider>()->GetOppositePosition(position));
 }
 
-void AircraftMovingController::OnLeftBoundCollision(Node* verticalBoundNode) {
+void AircraftMovingController::OnLeftBoundCollision(Node* verticalBoundNode)
+{
 	if (-90 < targetRotation_ && targetRotation_ < 90) return;
 
 	auto position = GetNode()->GetPosition2D();

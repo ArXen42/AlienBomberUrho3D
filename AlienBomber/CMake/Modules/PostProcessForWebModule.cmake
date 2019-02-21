@@ -22,14 +22,14 @@
 
 # Post process to glue the main module and side module(s) together
 
-string (REPLACE " " .js',' SIDE_MODULES "'${SIDE_MODULES}.js'")              # Stringify for string replacement
+string(REPLACE " " .js',' SIDE_MODULES "'${SIDE_MODULES}.js'")              # Stringify for string replacement
 if (HAS_SHELL_FILE)
-    file (READ ${TARGET_FILE} CONTENT)
-    string (REPLACE ${TARGET_NAME}.js libUrho3D.js CONTENT "${CONTENT}")     # Stringify to preserve semicolons
+    file(READ ${TARGET_FILE} CONTENT)
+    string(REPLACE ${TARGET_NAME}.js libUrho3D.js CONTENT "${CONTENT}")     # Stringify to preserve semicolons
     # Assume HTML shell-file has Module object without the 'dynamicLibraries' prop defined yet
-    string (REGEX REPLACE "(var Module *= *{)" \\1dynamicLibraries:[${SIDE_MODULES}], CONTENT "${CONTENT}")
-    file (WRITE ${TARGET_FILE} "${CONTENT}")
+    string(REGEX REPLACE "(var Module *= *{)" \\1dynamicLibraries:[${SIDE_MODULES}], CONTENT "${CONTENT}")
+    file(WRITE ${TARGET_FILE} "${CONTENT}")
 else ()
-    file (READ ${TARGET_DIR}/libUrho3D.js CONTENT)
-    file (WRITE ${TARGET_DIR}/${TARGET_NAME}.main.js "var Module={dynamicLibraries:[${SIDE_MODULES}]};${CONTENT}")
+    file(READ ${TARGET_DIR}/libUrho3D.js CONTENT)
+    file(WRITE ${TARGET_DIR}/${TARGET_NAME}.main.js "var Module={dynamicLibraries:[${SIDE_MODULES}]};${CONTENT}")
 endif ()

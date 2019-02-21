@@ -4,19 +4,24 @@
 
 using namespace Urho3D;
 
-class ShellController : public LogicComponent {
+class ShellController : public LogicComponent
+{
 URHO3D_OBJECT(ShellController, LogicComponent);
 public:
-	static void RegisterObject(Context* context) { context->RegisterFactory<ShellController>(); }
+	static void RegisterObject(Context* context)
+	{ context->RegisterFactory<ShellController>(); }
 
 public:
-	ShellController(Context* context) : LogicComponent(context) {}
+	ShellController(Context* context) : LogicComponent(context)
+	{}
 
 private:
 	void Start() override;
 
 	void OnTerrainCollision(Node* terrainNode);
+
 	void OnRightBoundCollision(Node* verticalBoundNode);
+
 	void OnLeftBoundCollision(Node* verticalBoundNode);
 
 	ExplosiveController* explosiveController_ = nullptr;

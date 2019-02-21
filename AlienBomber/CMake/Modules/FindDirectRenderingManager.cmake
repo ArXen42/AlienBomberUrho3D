@@ -27,10 +27,10 @@
 #  DRM_LIBRARIES
 #
 
-find_path (DRM_INCLUDE_DIRS NAMES xf86drm.h DOC "DirectRenderingManager include directory")
-find_library (DRM_LIBRARIES NAMES drm DOC "DirectRenderingManager library")
+find_path(DRM_INCLUDE_DIRS NAMES xf86drm.h DOC "DirectRenderingManager include directory")
+find_library(DRM_LIBRARIES NAMES drm DOC "DirectRenderingManager library")
 
-include (FindPackageHandleStandardArgs)
-find_package_handle_standard_args (DirectRenderingManager REQUIRED_VARS DRM_LIBRARIES DRM_INCLUDE_DIRS FAIL_MESSAGE "Could NOT find Direct Rendering Manager development library")
+include(FindPackageHandleStandardArgs)
+find_package_handle_standard_args(DirectRenderingManager REQUIRED_VARS DRM_LIBRARIES DRM_INCLUDE_DIRS FAIL_MESSAGE "Could NOT find Direct Rendering Manager development library")
 
-mark_as_advanced (DRM_INCLUDE_DIRS DRM_LIBRARIES)
+mark_as_advanced(DRM_INCLUDE_DIRS DRM_LIBRARIES)

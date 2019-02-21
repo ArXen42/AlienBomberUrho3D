@@ -7,18 +7,19 @@
 #include "CameraController.hpp"
 #include "Terrain/TerrainController.hpp"
 
-void CameraController::Start() {
-	auto camera = GetComponent<Camera>();
+void CameraController::Start()
+{
+	auto camera   = GetComponent<Camera>();
 	auto viewport = new Viewport(context_, GetScene(), camera);
 	GetSubsystem<Renderer>()->SetViewport(0, viewport);
 
 	float aspectRatio = camera->GetAspectRatio();
-	float orthoSize = TerrainController::TERRAIN_LENGTH/aspectRatio;
+	float orthoSize   = TerrainController::TERRAIN_LENGTH / aspectRatio;
 	camera->SetOrthoSize(orthoSize);
 	//Хак для того, чтобы получить корректное соотношение сторон в контроллерах коллайдеров границ
 	camera->SetAspectRatioInternal(aspectRatio);
 
 	Vector2 terrainPosition = GetScene()->GetChild("Terrain")->GetPosition2D();
-	float verticalOffset = (orthoSize - TerrainController::MAX_TERRAIN_HEIGHT)/2;
+	float   verticalOffset  = (orthoSize - TerrainController::MAX_TERRAIN_HEIGHT) / 2;
 	GetNode()->SetPosition2D(terrainPosition + Vector2(0, verticalOffset));
 }

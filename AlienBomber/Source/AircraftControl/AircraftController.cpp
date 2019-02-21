@@ -5,11 +5,13 @@
 #include "../CollisionDetection/CollisionsAggregator.hpp"
 #include "../CollisionDetection/TerrainCollider.hpp"
 
-void AircraftController::Kill() {
+void AircraftController::Kill()
+{
 	GetSubsystem<GameSubsystem>()->RequestReloadGameLevel();
 }
 
-void AircraftController::Start() {
+void AircraftController::Start()
+{
 	GetComponent<CollisionsAggregator>()
 			->GetSignal(TerrainCollider::GetTypeInfoStatic())
 			->Connect(this, &AircraftController::OnTerrainCollision);
@@ -19,6 +21,7 @@ void AircraftController::Start() {
 	GetNode()->CreateComponent<AircraftBombsController>();
 }
 
-void AircraftController::OnTerrainCollision(Node* terrainNode) {
+void AircraftController::OnTerrainCollision(Node* terrainNode)
+{
 	Kill();
 }

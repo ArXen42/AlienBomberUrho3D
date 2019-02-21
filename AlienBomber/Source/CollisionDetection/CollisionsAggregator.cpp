@@ -9,32 +9,36 @@
 
 using namespace Gallant;
 
-SharedPtr<Signal1<Node*>> CollisionsAggregator::GetSignal(const TypeInfo* colliderTypeInfo, CollisionType type) {
+SharedPtr<Signal1<Node*>> CollisionsAggregator::GetSignal(const TypeInfo* colliderTypeInfo, CollisionType type)
+{
 	assert(colliderTypeInfo->IsTypeOf(StaticColliderComponent::GetTypeStatic()));
 
 	auto& signalsHashMap = type == CollisionType::BeginContact
 	                       ? collisionBeginContactSignals_
 	                       : collisionEndContactSignals_;
 
-	if (!signalsHashMap.Contains(colliderTypeInfo->GetType())) {
+	if (!signalsHashMap.Contains(colliderTypeInfo->GetType()))
+	{
 		signalsHashMap[colliderTypeInfo->GetType()] = new Gallant::Signal1<Node*>();
 	}
 
 	return signalsHashMap[colliderTypeInfo->GetType()];
 }
 
-void CollisionsAggregator::Start() {
+void CollisionsAggregator::Start()
+{
 	SubscribeToEvent(E_PHYSICSBEGINCONTACT2D, URHO3D_HANDLER(CollisionsAggregator, OnPhysicsBeginContact2D));
 	SubscribeToEvent(E_PHYSICSENDCONTACT2D, URHO3D_HANDLER(CollisionsAggregator, OnPhysicsEndContact2D));
 }
 
-void CollisionsAggregator::OnContact(CollisionType type, VariantMap& eventData) {
+void CollisionsAggregator::OnContact(CollisionType type, VariantMap& eventData)
+{
 	auto nodeA = dynamic_cast<Node*>(eventData[PhysicsBeginContact2D::P_NODEA].GetPtr());
 	auto nodeB = dynamic_cast<Node*>(eventData[PhysicsBeginContact2D::P_NODEB].GetPtr());
 
 	if (nodeA != node_ && nodeB != node_) return;
 
-	auto collidedNode = nodeB == node_ ? nodeA : nodeB;
+	auto collidedNode            = nodeB == node_ ? nodeA : nodeB;
 	auto staticColliderComponent = collidedNode->GetDerivedComponent<StaticColliderComponent>();
 	if (staticColliderComponent == nullptr) return;
 

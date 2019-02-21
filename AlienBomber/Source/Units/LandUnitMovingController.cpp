@@ -9,13 +9,15 @@
 #include "../CollisionDetection/RightBoundCollider.hpp"
 #include "../CollisionDetection/LeftBoundCollider.hpp"
 
-void LandUnitMovingController::Update(float timeStep) {
-	auto rigidBody2D = GetComponent<RigidBody2D>();
-	float y = rigidBody2D->GetLinearVelocity().y_;
+void LandUnitMovingController::Update(float timeStep)
+{
+	auto  rigidBody2D = GetComponent<RigidBody2D>();
+	float y           = rigidBody2D->GetLinearVelocity().y_;
 	rigidBody2D->SetLinearVelocity({movingDirection_ == MovingDirection::Right ? speed_ : -speed_, y});
 }
 
-void LandUnitMovingController::DelayedStart() {
+void LandUnitMovingController::DelayedStart()
+{
 	node_->CreateComponent<CollisionsAggregator>();
 
 	GetComponent<CollisionsAggregator>()
@@ -27,15 +29,18 @@ void LandUnitMovingController::DelayedStart() {
 			->Connect(this, &LandUnitMovingController::OnLeftBoundCollision);
 }
 
-void LandUnitMovingController::OnRightBoundCollision(Node* verticalBoundNode) {
+void LandUnitMovingController::OnRightBoundCollision(Node* verticalBoundNode)
+{
 	SetMovingDirection(MovingDirection::Left);
 }
 
-void LandUnitMovingController::OnLeftBoundCollision(Node* verticalBoundNode) {
+void LandUnitMovingController::OnLeftBoundCollision(Node* verticalBoundNode)
+{
 	SetMovingDirection(MovingDirection::Right);
 }
 
-void LandUnitMovingController::SetMovingDirection(LandUnitMovingController::MovingDirection value) {
+void LandUnitMovingController::SetMovingDirection(LandUnitMovingController::MovingDirection value)
+{
 	movingDirection_ = value;
 	GetComponent<StaticSprite2D>()->SetFlipX(value == MovingDirection::Left);
 }

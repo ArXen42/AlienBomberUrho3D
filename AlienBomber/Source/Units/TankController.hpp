@@ -6,16 +6,22 @@
 
 using namespace Urho3D;
 
-class TankController : public LogicComponent {
+class TankController : public LogicComponent
+{
 URHO3D_OBJECT(TankController, LogicComponent)
-public:
-	static void RegisterObject(Context* context) { context->RegisterFactory<TankController>(); }
 
 public:
-	TankController(Context* context) : LogicComponent(context) {};
+	static void RegisterObject(Context* context)
+	{ context->RegisterFactory<TankController>(); }
+
+public:
+	TankController(Context* context) : LogicComponent(context)
+	{};
 
 private:
 	void Start() override;
+
 	void Stop() override;
+
 	void OnSomethingExploded(ExplosiveController* shell, Node* collidedNode);
 };

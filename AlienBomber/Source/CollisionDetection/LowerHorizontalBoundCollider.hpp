@@ -3,11 +3,14 @@
 #include <Urho3D/Core/Context.h>
 #include "StaticColliderComponent.hpp"
 
-class LowerHorizontalBoundCollider : public StaticColliderComponent {
+class LowerHorizontalBoundCollider : public StaticColliderComponent
+{
 URHO3D_OBJECT(LowerHorizontalBoundCollider, StaticColliderComponent);
 public:
-	static void RegisterObject(Context* context) { context->RegisterFactory<LowerHorizontalBoundCollider>(); }
+	static void RegisterObject(Context* context)
+	{ context->RegisterFactory<LowerHorizontalBoundCollider>(); }
 
 public:
-	LowerHorizontalBoundCollider(Context* context) : StaticColliderComponent(context) {}
+	LowerHorizontalBoundCollider(Context* context) : StaticColliderComponent(context)
+	{}
 };

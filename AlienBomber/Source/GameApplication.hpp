@@ -9,9 +9,11 @@
 
 using namespace Urho3D;
 
-class GameApplication : public Application {
+class GameApplication : public Application
+{
 public:
-	GameApplication(Context* context) : Application(context) {}
+	GameApplication(Context* context) : Application(context)
+	{}
 
 	virtual void Setup();
 

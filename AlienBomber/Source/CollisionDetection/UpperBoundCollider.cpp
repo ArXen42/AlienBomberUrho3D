@@ -5,19 +5,21 @@
 #include <Urho3D/Graphics/Camera.h>
 #include "UpperBoundCollider.hpp"
 
-float UpperBoundCollider::ReflectDirectionAngle(float degAngle) {
+float UpperBoundCollider::ReflectDirectionAngle(float degAngle)
+{
 	return -degAngle;
 }
 
-void UpperBoundCollider::Start() {
+void UpperBoundCollider::Start()
+{
 	auto cameraNode = GetScene()->GetChild("MainCamera");
-	auto camera = cameraNode->GetComponent<Camera>();
+	auto camera     = cameraNode->GetComponent<Camera>();
 
-	const float verticalSize = camera->GetOrthoSize();
-	const float horizontalSize = verticalSize*camera->GetAspectRatio();
+	const float verticalSize   = camera->GetOrthoSize();
+	const float horizontalSize = verticalSize * camera->GetAspectRatio();
 
 	GetComponent<CollisionEdge2D>()->SetVertices(
-			Vector2(-horizontalSize/2, verticalSize/2) + cameraNode->GetPosition2D(),
-			Vector2(horizontalSize/2, verticalSize/2) + cameraNode->GetPosition2D()
+			Vector2(-horizontalSize / 2, verticalSize / 2) + cameraNode->GetPosition2D(),
+			Vector2(horizontalSize / 2, verticalSize / 2) + cameraNode->GetPosition2D()
 	);
 }
