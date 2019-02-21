@@ -21,6 +21,7 @@ void TankSpawner::InstantiateTank(float normalizedPos) {
 	tank->CreateComponent<LandUnitMovingController>();
 
 	auto terrain = GetScene()->GetChild("Terrain")->GetComponent<TerrainController>();
-	tank->SetPosition2D({terrain->GetPositionFromNormalized(normalizedPos).x_, TerrainController::MAX_TERRAIN_HEIGHT});
+	float terrainHeigh = terrain->GetPositionFromNormalized(normalizedPos).y_ + 3;
+	tank->SetPosition2D({terrain->GetPositionFromNormalized(normalizedPos).x_, terrainHeigh});
 
 }
