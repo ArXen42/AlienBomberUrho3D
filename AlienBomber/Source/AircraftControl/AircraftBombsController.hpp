@@ -13,7 +13,7 @@ public:
 	{ context->RegisterFactory<AircraftBombsController>(); }
 
 public:
-	AircraftBombsController(Context* context) : LogicComponent(context)
+	explicit AircraftBombsController(Context* context) : LogicComponent(context)
 	{}
 
 private:

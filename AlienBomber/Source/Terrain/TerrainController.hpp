@@ -31,7 +31,7 @@ public:
 	static const float MAX_TERRAIN_HEIGHT;
 
 public:
-	TerrainController(Context* context) : LogicComponent(context)
+	explicit TerrainController(Context* context) : LogicComponent(context)
 	{}
 
 	const Vector<float>* GetHeightmap() const

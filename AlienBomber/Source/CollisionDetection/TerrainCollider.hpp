@@ -12,6 +12,6 @@ public:
 	{ context->RegisterFactory<TerrainCollider>(); }
 
 public:
-	TerrainCollider(Context* context) : StaticColliderComponent(context)
+	explicit TerrainCollider(Context* context) : StaticColliderComponent(context)
 	{}
 };

@@ -14,7 +14,7 @@ public:
 	{ context->RegisterFactory<SkySpriteController>(); }
 
 public:
-	SkySpriteController(Context* context) : LogicComponent(context)
+	explicit SkySpriteController(Context* context) : LogicComponent(context)
 	{};
 
 private:

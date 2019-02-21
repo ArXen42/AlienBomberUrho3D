@@ -15,14 +15,14 @@ public:
 	{ context->RegisterFactory<AircraftMovingController>(); }
 
 public:
-	AircraftMovingController(Context* context) : LogicComponent(context)
+	explicit AircraftMovingController(Context* context) : LogicComponent(context)
 	{}
 
 	void SetTargetPosition(const Vector2& position);
 
 	void SetTargetRotation(float rotation);
 
-	Vector2 GetLinearVelocity()
+	Vector2 GetLinearVelocity() const
 	{ return rigidBody2D_->GetLinearVelocity(); }
 
 private:

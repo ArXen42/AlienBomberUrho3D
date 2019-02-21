@@ -20,11 +20,11 @@ public:
 	};
 
 public:
-	LandUnitMovingController(Context* context) : LogicComponent(context)
+	explicit LandUnitMovingController(Context* context) : LogicComponent(context)
 	{}
 
 	/// Возвращает текущее направление движения.
-	MovingDirection GetMovingDirection()
+	MovingDirection GetMovingDirection() const
 	{ return movingDirection_; }
 
 	/// Устанавливает направление движения.

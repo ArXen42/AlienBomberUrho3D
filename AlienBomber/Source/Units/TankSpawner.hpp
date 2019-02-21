@@ -14,7 +14,7 @@ public:
 	{ context->RegisterFactory<TankSpawner>(); }
 
 public:
-	TankSpawner(Context* context) : LogicComponent(context)
+	explicit TankSpawner(Context* context) : LogicComponent(context)
 	{}
 
 private:

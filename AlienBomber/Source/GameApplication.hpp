@@ -12,12 +12,12 @@ using namespace Urho3D;
 class GameApplication : public Application
 {
 public:
-	GameApplication(Context* context) : Application(context)
+	explicit GameApplication(Context* context) : Application(context)
 	{}
 
-	virtual void Setup();
+	void Setup() override;
 
-	virtual void Start();
+	void Start() override;
 
 	void HandlePostRenderUpdate(StringHash eventType, VariantMap& eventData);
 

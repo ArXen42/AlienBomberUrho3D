@@ -14,7 +14,7 @@ Vector2 TerrainController::GetPositionFromNormalized(float normalizedX)
 	assert(normalizedX >= 0);
 	assert(normalizedX <= 1);
 
-	unsigned int index = static_cast<unsigned int>((heightmap_.Size() - 1) * normalizedX);
+	const auto index = static_cast<unsigned int>((heightmap_.Size() - 1) * normalizedX);
 	return Vector2(normalizedX * TERRAIN_LENGTH - TERRAIN_LENGTH / 2,
 	               heightmap_[index] * MAX_TERRAIN_HEIGHT - MAX_TERRAIN_HEIGHT / 2);
 }

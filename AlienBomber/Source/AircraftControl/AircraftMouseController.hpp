@@ -13,7 +13,7 @@ public:
 	{ context->RegisterFactory<AircraftMouseController>(); }
 
 public:
-	AircraftMouseController(Context* context) : LogicComponent(context)
+	explicit AircraftMouseController(Context* context) : LogicComponent(context)
 	{}
 
 	void Start() override;

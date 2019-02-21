@@ -12,7 +12,7 @@ public:
 	{ context->RegisterFactory<ShellController>(); }
 
 public:
-	ShellController(Context* context) : LogicComponent(context)
+	explicit ShellController(Context* context) : LogicComponent(context)
 	{}
 
 private:

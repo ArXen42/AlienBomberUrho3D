@@ -11,6 +11,6 @@ using namespace Urho3D;
 class StaticColliderComponent : public LogicComponent
 {
 protected:
-	StaticColliderComponent(Context* context) : LogicComponent(context)
+	explicit StaticColliderComponent(Context* context) : LogicComponent(context)
 	{};
 };

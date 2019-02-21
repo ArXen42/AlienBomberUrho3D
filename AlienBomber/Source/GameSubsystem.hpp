@@ -11,7 +11,7 @@ class GameSubsystem : public Object
 URHO3D_OBJECT(GameSubsystem, Object)
 
 public:
-	GameSubsystem(Context* context) : Object(context)
+	explicit GameSubsystem(Context* context) : Object(context)
 	{
 		SubscribeToEvent(E_BEGINFRAME, URHO3D_HANDLER(GameSubsystem, HandleBeginFrame));
 	};

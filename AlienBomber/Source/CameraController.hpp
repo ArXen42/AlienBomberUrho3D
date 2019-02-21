@@ -13,7 +13,7 @@ public:
 	{ context->RegisterFactory<CameraController>(); }
 
 public:
-	CameraController(Context* context) : LogicComponent(context)
+	explicit CameraController(Context* context) : LogicComponent(context)
 	{}
 
 private:

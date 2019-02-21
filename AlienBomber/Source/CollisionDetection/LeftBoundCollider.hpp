@@ -19,11 +19,11 @@ public:
 	{}
 
 	/// Возвращает противоположную границу.
-	RightBoundCollider* GetOppositeBound()
+	RightBoundCollider* GetOppositeBound() const
 	{ return opposite_; }
 
 	/// Возвращает проекцию позиции на эту границу.
-	Vector2 GetPositionOnBound(float y)
+	Vector2 GetPositionOnBound(float y) const
 	{ return Vector2(GetNode()->GetPosition2D().x_, y); }
 
 	/// Возвращает проекцию позиции на противоположную границу.

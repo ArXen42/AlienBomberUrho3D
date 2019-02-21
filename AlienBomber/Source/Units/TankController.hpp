@@ -15,7 +15,7 @@ public:
 	{ context->RegisterFactory<TankController>(); }
 
 public:
-	TankController(Context* context) : LogicComponent(context)
+	explicit TankController(Context* context) : LogicComponent(context)
 	{};
 
 private:

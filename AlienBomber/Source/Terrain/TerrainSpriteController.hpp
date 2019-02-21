@@ -14,7 +14,7 @@ public:
 	{ context->RegisterFactory<TerrainSpriteController>(); }
 
 public:
-	TerrainSpriteController(Context* context) : LogicComponent(context)
+	explicit TerrainSpriteController(Context* context) : LogicComponent(context)
 	{}
 
 private:
@@ -26,7 +26,7 @@ private:
 
 	void OnHeightmapUpdated(HeightmapUpdateDiff diff);
 
-	float Lerp(float from, float to, float factor)
+	static float Lerp(float from, float to, float factor)
 	{ return from + (to - from) * factor; }
 
 	unsigned int terrainResolutionX_ = 0;

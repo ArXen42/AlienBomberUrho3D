@@ -30,11 +30,11 @@ public:
 	{ Exploded.Emit(this, node), SomethingExploded.Emit(this, node), GetNode()->Remove(); }
 
 	/// Возвращает силу взрыва.
-	float GetExplosionPower()
+	float GetExplosionPower() const
 	{ return explosionPower_; }
 
 	/// Возвращает радиус взрыва.
-	float GetExplosionRange()
+	float GetExplosionRange() const
 	{ return explosionRange_; }
 
 	/// Устанавливает силу взрыва.

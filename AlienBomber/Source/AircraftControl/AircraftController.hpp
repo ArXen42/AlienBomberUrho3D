@@ -17,7 +17,7 @@ public:
 	{ context->RegisterFactory<AircraftController>(); }
 
 public:
-	AircraftController(Context* context) : LogicComponent(context)
+	explicit AircraftController(Context* context) : LogicComponent(context)
 	{}
 
 	void Kill();

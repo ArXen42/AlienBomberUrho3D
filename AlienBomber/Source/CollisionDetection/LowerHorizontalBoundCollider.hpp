@@ -11,6 +11,6 @@ public:
 	{ context->RegisterFactory<LowerHorizontalBoundCollider>(); }
 
 public:
-	LowerHorizontalBoundCollider(Context* context) : StaticColliderComponent(context)
+	explicit LowerHorizontalBoundCollider(Context* context) : StaticColliderComponent(context)
 	{}
 };

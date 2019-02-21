@@ -11,7 +11,7 @@ public:
 	{ context->RegisterFactory<UpperBoundCollider>(); }
 
 public:
-	UpperBoundCollider(Context* context) : StaticColliderComponent(context)
+	explicit UpperBoundCollider(Context* context) : StaticColliderComponent(context)
 	{}
 
 	void Start() override;
