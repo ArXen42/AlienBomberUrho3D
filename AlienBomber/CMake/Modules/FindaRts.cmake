@@ -1,5 +1,5 @@
 #
-# Copyright (c) 2008-2016 the Urho3D project.
+# Copyright (c) 2008-2019 the Urho3D project.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -28,16 +28,16 @@
 #  ARTS_VERSION
 #
 
-find_path(ARTS_INCLUDE_DIRS NAMES artsc/artsc.h PATH_SUFFIXES kde DOC "aRts include directory")
-find_library(ARTS_LIBRARIES NAMES artsc DOC "aRts library")
+find_path (ARTS_INCLUDE_DIRS NAMES artsc/artsc.h PATH_SUFFIXES kde DOC "aRts include directory")
+find_library (ARTS_LIBRARIES NAMES artsc DOC "aRts library")
 
 if (NOT ARTS_VERSION AND ARTS_INCLUDE_DIRS AND EXISTS ${ARTS_INCLUDE_DIRS}/arts/artsversion.h)   # Only do this once
-    file(STRINGS ${ARTS_INCLUDE_DIRS}/arts/artsversion.h ARTS_VERSION REGEX "^.*ARTS_VERSION.+\"[^\"]*\".*$")
-    string(REGEX REPLACE "^.*ARTS_VERSION.+\"([^\"]*)\".*$" \\1 ARTS_VERSION "${ARTS_VERSION}")      # Stringify to guard against empty variable
-    set(ARTS_VERSION "${ARTS_VERSION}" CACHE INTERNAL "aRts version")
+    file (STRINGS ${ARTS_INCLUDE_DIRS}/arts/artsversion.h ARTS_VERSION REGEX "^.*ARTS_VERSION.+\"[^\"]*\".*$")
+    string (REGEX REPLACE "^.*ARTS_VERSION.+\"([^\"]*)\".*$" \\1 ARTS_VERSION "${ARTS_VERSION}")      # Stringify to guard against empty variable
+    set (ARTS_VERSION "${ARTS_VERSION}" CACHE INTERNAL "aRts version")
 endif ()
 
-include(FindPackageHandleStandardArgs)
-find_package_handle_standard_args(aRts REQUIRED_VARS ARTS_LIBRARIES ARTS_INCLUDE_DIRS VERSION_VAR ARTS_VERSION FAIL_MESSAGE "Could NOT find aRts development library")
+include (FindPackageHandleStandardArgs)
+find_package_handle_standard_args (aRts REQUIRED_VARS ARTS_LIBRARIES ARTS_INCLUDE_DIRS VERSION_VAR ARTS_VERSION FAIL_MESSAGE "Could NOT find aRts development library")
 
-mark_as_advanced(ARTS_INCLUDE_DIRS ARTS_LIBRARIES)
+mark_as_advanced (ARTS_INCLUDE_DIRS ARTS_LIBRARIES)

@@ -20,17 +20,17 @@
 # THE SOFTWARE.
 #
 
-# Find RoarAudio development library
+# Find Jack Audio Connection Kit development library
 #
-#  SNDIO_FOUND
-#  SNDIO_INCLUDE_DIRS
-#  SNDIO_LIBRARIES
+#  JACK_FOUND
+#  JACK_INCLUDE_DIRS
+#  JACK_LIBRARIES
 #
 
-find_path (SNDIO_INCLUDE_DIRS NAMES RoarAudio.h DOC "RoarAudio include directory")
-find_library (SNDIO_LIBRARIES NAMES RoarAudio DOC "RoarAudio library")
+find_path (JACK_INCLUDE_DIRS NAMES jack/jack.h DOC "JACK include directory")
+find_library (JACK_LIBRARIES NAMES jack DOC "JACK library")
 
 include (FindPackageHandleStandardArgs)
-find_package_handle_standard_args (RoarAudio REQUIRED_VARS SNDIO_LIBRARIES SNDIO_INCLUDE_DIRS FAIL_MESSAGE "Could NOT find RoarAudio development library")
+find_package_handle_standard_args (Jack REQUIRED_VARS JACK_LIBRARIES JACK_INCLUDE_DIRS FAIL_MESSAGE "Could NOT find Jack Audio Connection Kit development library")
 
-mark_as_advanced (SNDIO_INCLUDE_DIRS SNDIO_LIBRARIES)
+mark_as_advanced (JACK_INCLUDE_DIRS JACK_LIBRARIES)

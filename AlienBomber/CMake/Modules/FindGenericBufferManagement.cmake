@@ -20,17 +20,17 @@
 # THE SOFTWARE.
 #
 
-# Find RoarAudio development library
+# Find Generic Buffer Management development library
 #
-#  SNDIO_FOUND
-#  SNDIO_INCLUDE_DIRS
-#  SNDIO_LIBRARIES
+#  GBM_FOUND
+#  GBM_INCLUDE_DIRS
+#  GBM_LIBRARIES
 #
 
-find_path (SNDIO_INCLUDE_DIRS NAMES RoarAudio.h DOC "RoarAudio include directory")
-find_library (SNDIO_LIBRARIES NAMES RoarAudio DOC "RoarAudio library")
+find_path (GBM_INCLUDE_DIRS NAMES gbm.h DOC "GenericBufferManagement include directory")
+find_library (GBM_LIBRARIES NAMES gbm DOC "GenericBufferManagement library")
 
 include (FindPackageHandleStandardArgs)
-find_package_handle_standard_args (RoarAudio REQUIRED_VARS SNDIO_LIBRARIES SNDIO_INCLUDE_DIRS FAIL_MESSAGE "Could NOT find RoarAudio development library")
+find_package_handle_standard_args (GenericBufferManagement REQUIRED_VARS GBM_LIBRARIES GBM_INCLUDE_DIRS FAIL_MESSAGE "Could NOT find Direct Generic Buffer Management development library")
 
-mark_as_advanced (SNDIO_INCLUDE_DIRS SNDIO_LIBRARIES)
+mark_as_advanced (GBM_INCLUDE_DIRS GBM_LIBRARIES)
