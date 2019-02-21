@@ -14,7 +14,7 @@
       "type": "StaticSprite2D",
       "id": 16777551,
       "attributes": {
-        "Sprite": "Sprite2D;Sprites/Tank.png"
+        "Sprite": "Sprite2D;Data/Sprites/Tank.png"
       }
     },
     {

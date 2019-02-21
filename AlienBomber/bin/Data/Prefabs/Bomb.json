@@ -31,7 +31,7 @@
 			"type": "StaticSprite2D",
 			"id": 16777230,
 			"attributes": {
-				"Sprite": "Sprite2D;Sprites/Bomb.png"
+				"Sprite": "Sprite2D;Data/Sprites/Bomb.png"
 			}
 		}
 	],

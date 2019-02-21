@@ -2,14 +2,14 @@
 	"id": 1,
 	"attributes": {
 		"Name": "",
-		"Time Scale": 1,
-		"Smoothing Constant": 50,
-		"Snap Threshold": 5,
-		"Elapsed Time": 3.15888,
+		"Time Scale": 1.0,
+		"Smoothing Constant": 50.0,
+		"Snap Threshold": 5.0,
+		"Elapsed Time": 3.1588799953460695,
 		"Next Replicated Node ID": 3,
 		"Next Replicated Component ID": 7,
-      "Next Local Node ID": 16777262,
-      "Next Local Component ID": 16777554,
+		"Next Local Node ID": 16777263,
+		"Next Local Component ID": 16777566,
 		"Variables": {},
 		"Variable Names": ""
 	},
@@ -21,7 +21,8 @@
 		},
 		{
 			"type": "DebugRenderer",
-			"id": 2
+			"id": 2,
+			"attributes": null
 		},
 		{
 			"type": "Renderer2D",
@@ -37,7 +38,6 @@
 				"Draw CenterOfMass": true,
 				"Allow Sleeping": true,
 				"Warm Starting": true,
-				"Continuous Physics": true,
 				"Sub Stepping": true,
 				"Auto Clear Forces": true
 			}
@@ -65,8 +65,8 @@
 					"type": "Camera",
 					"id": 16777240,
 					"attributes": {
-						"Near Clip": 0,
-						"Aspect Ratio": 1.78067,
+						"Near Clip": 0.0,
+						"Aspect Ratio": 1.7806700468063355,
 						"Orthographic": true
 					}
 				}
@@ -152,17 +152,19 @@
 					"id": 16777397,
 					"attributes": {
 						"Body Type": "Dynamic",
-						"Mass": 1,
-						"Inertia": 1,
+						"Mass": 1.0,
+						"Inertia": 1.0,
 						"Use Fixture Mass": false,
-						"Gravity Scale": 0
+						"Gravity Scale": 0.0
 					}
 				},
 				{
 					"type": "StaticSprite2D",
 					"id": 16777430,
 					"attributes": {
-						"Sprite": "Sprite2D;Sprites/Plane.png"
+						"Sprite": "Sprite2D;Data/Sprites/Plane.png",
+						"Draw Rectangle": "-0.32 -0.08 0.32 0.08",
+						"Texture Rectangle": "7.8125e-07 0.999997 0.999999 3.125e-06"
 					}
 				}
 			],
@@ -278,8 +280,10 @@
 					"id": 16777538,
 					"attributes": {
 						"Order in Layer": -1,
-                      "Sprite": "Sprite2D;Sprites/Sky.png",
-                      "Color": "0.85 0.85 0.8 1"
+						"Sprite": "Sprite2D;Data/Sprites/Sky.png",
+						"Color": "0.85 0.85 0.8 1",
+						"Draw Rectangle": "-5.12 -5.12 5.12 5.12",
+						"Texture Rectangle": "4.88281e-08 1 1 4.88281e-08"
 					}
 				}
 			],
