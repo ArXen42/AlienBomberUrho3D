@@ -7,6 +7,10 @@ using namespace Urho3D;
 class TerrainCollisionShapeController : public LogicComponent
 {
 URHO3D_OBJECT(TerrainCollisionShapeController, LogicComponent);
+
+private:
+	static constexpr unsigned int ShapeResolution = 128;
+
 public:
 	static void RegisterObject(Context* context)
 	{ context->RegisterFactory<TerrainCollisionShapeController>(); }
@@ -23,5 +27,4 @@ private:
 	void OnHeightmapUpdated(HeightmapUpdateDiff diff);
 
 	WeakPtr<TerrainController> terrainController_;
-	unsigned int               resolution_ = 128;
 };

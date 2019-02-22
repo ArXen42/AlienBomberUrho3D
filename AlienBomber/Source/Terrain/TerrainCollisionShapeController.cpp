@@ -7,7 +7,7 @@ void TerrainCollisionShapeController::Start()
 {
 	terrainController_ = GetComponent<TerrainController>();
 	terrainController_->HeightmapUpdated.Connect(this, &TerrainCollisionShapeController::OnHeightmapUpdated);
-	GetComponent<CollisionChain2D>()->SetVertexCount(resolution_);
+	GetComponent<CollisionChain2D>()->SetVertexCount(ShapeResolution);
 }
 
 void TerrainCollisionShapeController::OnHeightmapUpdated(HeightmapUpdateDiff diff)
@@ -21,13 +21,13 @@ void TerrainCollisionShapeController::OnHeightmapUpdated(HeightmapUpdateDiff dif
 	const float terrainMaxHeight = TerrainController::MaxTerrainLength;
 
 	//Генерация координат вершин CollisionChain из карты высот и параметров размера ландшафта
-	float             factor = static_cast<float>(resolution_) / heightmapSize;
+	float             factor = static_cast<float>(ShapeResolution) / heightmapSize;
 	for (unsigned int i      = static_cast<unsigned int>(diff.startIndex_ * factor); i <= diff.endIndex_ * factor; i++)
 	{
 		unsigned int heightmapIndex = static_cast<unsigned int>(i / factor);
 
 		const Vector2& vertex = Vector2(
-				i * terrainLength_ / (resolution_ - 1),
+				i * terrainLength_ / (ShapeResolution - 1),
 				heightmap->At(heightmapIndex) * terrainMaxHeight) - Vector2(terrainLength_ / 2, terrainMaxHeight / 2
 		);
 
@@ -36,7 +36,7 @@ void TerrainCollisionShapeController::OnHeightmapUpdated(HeightmapUpdateDiff dif
 
 	// Ввиду особенностей реализации компонента коллизий,
 	// для вызова RecreateFixture необходимо обязательно переназначить последнюю точку.
-	collisionChain->SetVertex(resolution_ - 1, Vector2(terrainLength_, heightmap->At(heightmapSize - 1) * terrainMaxHeight)
+	collisionChain->SetVertex(ShapeResolution - 1, Vector2(terrainLength_, heightmap->At(heightmapSize - 1) * terrainMaxHeight)
 	                                           - Vector2(terrainLength_ / 2, terrainMaxHeight / 2));
 }
 
