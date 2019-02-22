@@ -19,7 +19,7 @@ public:
 	static Gallant::Signal2<ExplosiveController*, Node*> SomethingExploded;
 
 public:
-	ExplosiveController(Context* context) : LogicComponent(context)
+	explicit ExplosiveController(Context* context) : LogicComponent(context)
 	{}
 
 	/// Оповещает о столкновении и взрыве снаряда.
@@ -27,7 +27,11 @@ public:
 
 	/// Вызывает события взрыва и удаляет ноду, к которой прикреплен этот компонент.
 	void Explode(Node* node)
-	{ Exploded.Emit(this, node), SomethingExploded.Emit(this, node), GetNode()->Remove(); }
+	{
+		Exploded.Emit(this, node);
+		SomethingExploded.Emit(this, node);
+		GetNode()->Remove();
+	}
 
 	/// Возвращает силу взрыва.
 	float GetExplosionPower() const
