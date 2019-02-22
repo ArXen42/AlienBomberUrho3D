@@ -27,8 +27,9 @@ public:
 	static void RegisterObject(Context* context)
 	{ context->RegisterFactory<TerrainController>(); }
 
-	static constexpr float TerrainLength    = 32;
-	static constexpr float MaxTerrainLength = 4;
+	static constexpr float  TerrainLength     = 32;
+	static constexpr float  MaxTerrainLength  = 4;
+	static constexpr size_t TerrainResolution = 1024;
 
 public:
 	explicit TerrainController(Context* context) : LogicComponent(context)
@@ -60,5 +61,5 @@ private:
 	/// Деформирует ландшафт в указанной точке.
 	void BlastDeform(unsigned int index, unsigned int radius, float depth);
 
-	Vector<float> heightmap_ = Vector<float>(1024);
+	Vector<float> heightmap_ = Vector<float>(TerrainResolution);
 };

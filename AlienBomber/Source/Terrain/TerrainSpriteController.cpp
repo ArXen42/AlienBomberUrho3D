@@ -60,7 +60,7 @@ void TerrainSpriteController::OnHeightmapUpdated(HeightmapUpdateDiff diff)
 
 		for (int row = limit + 1; row < height; row++)
 		{
-			float transparency = 1.f / std::pow(row - limit, 1.f);
+			const auto transparency = static_cast<float>(1.f / std::pow(row - limit, 1.f));
 			const Color& pixelColor = Color(0.1f, 0.4f, 0, transparency);
 
 			image.SetPixel(column, height - 1 - row, pixelColor);

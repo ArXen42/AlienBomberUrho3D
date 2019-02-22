@@ -21,10 +21,11 @@ void TerrainCollisionShapeController::OnHeightmapUpdated(HeightmapUpdateDiff dif
 	const float terrainMaxHeight = TerrainController::MaxTerrainLength;
 
 	//Генерация координат вершин CollisionChain из карты высот и параметров размера ландшафта
-	float             factor = static_cast<float>(ShapeResolution) / heightmapSize;
-	for (unsigned int i      = static_cast<unsigned int>(diff.startIndex_ * factor); i <= diff.endIndex_ * factor; i++)
+	auto factor = static_cast<float>(ShapeResolution) / heightmapSize;
+
+	for (auto i = static_cast<unsigned int>(diff.startIndex_ * factor); i <= diff.endIndex_ * factor; i++)
 	{
-		unsigned int heightmapIndex = static_cast<unsigned int>(i / factor);
+		auto heightmapIndex = static_cast<unsigned int>(i / factor);
 
 		const Vector2& vertex = Vector2(
 				i * terrainLength_ / (ShapeResolution - 1),
@@ -37,7 +38,7 @@ void TerrainCollisionShapeController::OnHeightmapUpdated(HeightmapUpdateDiff dif
 	// Ввиду особенностей реализации компонента коллизий,
 	// для вызова RecreateFixture необходимо обязательно переназначить последнюю точку.
 	collisionChain->SetVertex(ShapeResolution - 1, Vector2(terrainLength_, heightmap->At(heightmapSize - 1) * terrainMaxHeight)
-	                                           - Vector2(terrainLength_ / 2, terrainMaxHeight / 2));
+	                                               - Vector2(terrainLength_ / 2, terrainMaxHeight / 2));
 }
 
 void TerrainCollisionShapeController::Stop()
