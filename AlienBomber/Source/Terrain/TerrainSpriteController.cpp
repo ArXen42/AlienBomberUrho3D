@@ -14,8 +14,8 @@ void TerrainSpriteController::Start()
 	terrainController_->HeightmapUpdated.Connect(this,
 	                                             &TerrainSpriteController::OnHeightmapUpdated);
 
-	terrainResolutionX_ = static_cast<unsigned int>(TerrainController::TERRAIN_LENGTH * 100);
-	terrainResolutionY_ = static_cast<unsigned int>(TerrainController::MAX_TERRAIN_HEIGHT * 100);
+	terrainResolutionX_ = static_cast<unsigned int>(TerrainController::TerrainLength * 100);
+	terrainResolutionY_ = static_cast<unsigned int>(TerrainController::MaxTerrainLength * 100);
 
 	InitializeSprite();
 }

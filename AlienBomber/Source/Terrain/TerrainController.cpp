@@ -6,17 +6,14 @@
 #include "TerrainController.hpp"
 
 
-const float TerrainController::TERRAIN_LENGTH     = 32;
-const float TerrainController::MAX_TERRAIN_HEIGHT = 4;
-
 Vector2 TerrainController::GetPositionFromNormalized(float normalizedX)
 {
 	assert(normalizedX >= 0);
 	assert(normalizedX <= 1);
 
 	const auto index = static_cast<unsigned int>((heightmap_.Size() - 1) * normalizedX);
-	return Vector2(normalizedX * TERRAIN_LENGTH - TERRAIN_LENGTH / 2,
-	               heightmap_[index] * MAX_TERRAIN_HEIGHT - MAX_TERRAIN_HEIGHT / 2);
+	return Vector2(normalizedX * TerrainLength - TerrainLength / 2,
+	               heightmap_[index] * MaxTerrainLength - MaxTerrainLength / 2);
 }
 
 void TerrainController::DelayedStart()
@@ -36,10 +33,10 @@ void TerrainController::OnSomethingExploded(ExplosiveController* shell, Node* co
 	if (collidedNode != GetNode()) return;
 
 	float deltaX      = shell->GetNode()->GetPosition2D().x_ - GetNode()->GetPosition2D().x_;
-	float normalizedX = deltaX / TERRAIN_LENGTH + 0.5f;
+	float normalizedX = deltaX / TerrainLength + 0.5f;
 	assert(normalizedX >= 0 && normalizedX <= 1);
 
-	unsigned int index = static_cast<unsigned int>((heightmap_.Size() - 1) * normalizedX);
+	auto index = static_cast<unsigned int>((heightmap_.Size() - 1) * normalizedX);
 	BlastDeform(index, 12, 0.001f * shell->GetExplosionPower());
 }
 
@@ -102,8 +99,8 @@ void TerrainController::BlastDeform(unsigned int index, unsigned int radius, flo
 	int          left  = index - radius;
 	unsigned int right = index + radius;
 
-	unsigned int startIndex = static_cast<unsigned int>(left > 0 ? left : 0);
-	unsigned int endIndex   = right < heightmap_.Size() ? right : heightmap_.Size() - 1;
+	auto startIndex = static_cast<unsigned int>(left > 0 ? left : 0);
+	auto endIndex   = right < heightmap_.Size() ? right : heightmap_.Size() - 1;
 
 	HeightmapUpdated.Emit({startIndex, endIndex});
 }

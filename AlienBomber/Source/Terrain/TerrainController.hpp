@@ -27,8 +27,8 @@ public:
 	static void RegisterObject(Context* context)
 	{ context->RegisterFactory<TerrainController>(); }
 
-	static const float TERRAIN_LENGTH;
-	static const float MAX_TERRAIN_HEIGHT;
+	static constexpr float TerrainLength    = 32;
+	static constexpr float MaxTerrainLength = 4;
 
 public:
 	explicit TerrainController(Context* context) : LogicComponent(context)

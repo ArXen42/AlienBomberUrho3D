@@ -12,7 +12,7 @@ public:
 	{ context->RegisterFactory<TerrainCollisionShapeController>(); }
 
 public:
-	TerrainCollisionShapeController(Context* context) : LogicComponent(context)
+	explicit TerrainCollisionShapeController(Context* context) : LogicComponent(context)
 	{}
 
 private:

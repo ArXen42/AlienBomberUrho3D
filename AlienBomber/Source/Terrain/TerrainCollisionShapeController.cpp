@@ -17,8 +17,8 @@ void TerrainCollisionShapeController::OnHeightmapUpdated(HeightmapUpdateDiff dif
 	auto heightmapSize     = heightmap->Size();
 	auto collisionChain    = GetComponent<CollisionChain2D>();
 
-	const float terrainLength_   = TerrainController::TERRAIN_LENGTH;
-	const float terrainMaxHeight = TerrainController::MAX_TERRAIN_HEIGHT;
+	const float terrainLength_   = TerrainController::TerrainLength;
+	const float terrainMaxHeight = TerrainController::MaxTerrainLength;
 
 	//Генерация координат вершин CollisionChain из карты высот и параметров размера ландшафта
 	float             factor = static_cast<float>(resolution_) / heightmapSize;

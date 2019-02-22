@@ -14,12 +14,12 @@ void CameraController::Start()
 	GetSubsystem<Renderer>()->SetViewport(0, viewport);
 
 	float aspectRatio = camera->GetAspectRatio();
-	float orthoSize   = TerrainController::TERRAIN_LENGTH / aspectRatio;
+	float orthoSize   = TerrainController::TerrainLength / aspectRatio;
 	camera->SetOrthoSize(orthoSize);
 	//Хак для того, чтобы получить корректное соотношение сторон в контроллерах коллайдеров границ
 	camera->SetAspectRatioInternal(aspectRatio);
 
 	Vector2 terrainPosition = GetScene()->GetChild("Terrain")->GetPosition2D();
-	float   verticalOffset  = (orthoSize - TerrainController::MAX_TERRAIN_HEIGHT) / 2;
+	float   verticalOffset  = (orthoSize - TerrainController::MaxTerrainLength) / 2;
 	GetNode()->SetPosition2D(terrainPosition + Vector2(0, verticalOffset));
 }
