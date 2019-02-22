@@ -36,12 +36,12 @@ private:
 
 	void OnContact(CollisionType type, VariantMap& eventData);
 
-	void OnPhysicsBeginContact2D(const StringHash& eventType, VariantMap& eventData)
+	void OnPhysicsBeginContact2D(StringHash eventType, VariantMap& eventData)
 	{
 		OnContact(CollisionType::BeginContact, eventData);
 	}
 
-	void OnPhysicsEndContact2D(const StringHash& eventType, VariantMap& eventData)
+	void OnPhysicsEndContact2D(StringHash eventType, VariantMap& eventData)
 	{
 		OnContact(CollisionType::EndContact, eventData);
 	}
